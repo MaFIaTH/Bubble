@@ -77,6 +77,7 @@
 				Column = column;
 
 				OnCoordinatesChanged.Invoke();
+				Debug.Log("Changed");
 			}
 		}
 
