@@ -7,6 +7,7 @@ public class PassiveCardScriptableObject : ScriptableObject
 {
    public string cardName;
    public float cardCost;
+   [Multiline(2)]
    public string cardDescription;
    
 }

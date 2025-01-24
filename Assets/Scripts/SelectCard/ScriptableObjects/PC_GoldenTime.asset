@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardName: GoldenTimeUp
   cardCost: 500
-  cardDescription: Increase GoldenTime duration * 2.5 second
+  cardDescription: "Increase GoldenTime \nduration * 2.5 second"
