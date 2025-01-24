@@ -75,7 +75,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55a4410459523924a8bc08605561a5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubblePrefab: {fileID: 2537837994019462497, guid: 5716ca920c73409439aa9ef028fa35f4, type: 3}
+  bubblePrefabs:
+  - {fileID: -7207164649125526444, guid: 792745008c3378d44a3a0fe6efdd33a2, type: 3}
+  - {fileID: 7856725824508914415, guid: 5716ca920c73409439aa9ef028fa35f4, type: 3}
+  - {fileID: 7805522312147388485, guid: 8cd5513f6b790fe45a8b1060a269f09b, type: 3}
+  - {fileID: 785669882735251056, guid: 2fff429c64d4af844946f09946b1d215, type: 3}
+  - {fileID: 785669882735251056, guid: 2829eef0449f3b241a7f68f318cfe915, type: 3}
+  - {fileID: 785669882735251056, guid: c63b9ecd184d2db4cae6eeeb3aad0f40, type: 3}
+  - {fileID: 4246538860020921705, guid: a24d99083d8a0c74298216e2858c5905, type: 3}
+  - {fileID: -3226815509435658215, guid: 6463937a4c0a4ca4da252842be9a6519, type: 3}
+  - {fileID: -1851239598716986919, guid: 135e993b6cea0414f8e1d5649fb20e3a, type: 3}
   row: 0
   bubbles: []
   onScreen: 0

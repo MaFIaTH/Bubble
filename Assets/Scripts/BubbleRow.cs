@@ -1,45 +1,72 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using NaughtyAttributes;
+using System.Linq;
+using Redcode.Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(HorizontalLayoutGroup))]
 public class BubbleRow : MonoBehaviour
 {
-    [SerializeField] private Bubble bubblePrefab;
-    
+    [SerializeField] private Bubble[] bubblePrefabs;
+    public Bubble[] BubblePrefabs => bubblePrefabs;
+
     [Header("Debug")]
-    [SerializeField, ReadOnly] private int row;
+    [SerializeField, NaughtyAttributes.ReadOnly] private int row;
     public int Row
     {
         get => row;
         set => row = value;
     }
 
-    [SerializeField, ReadOnly] private List<Bubble> bubbles = new List<Bubble>();
+    [SerializeField, NaughtyAttributes.ReadOnly] private List<Bubble> bubbles = new List<Bubble>();
     public List<Bubble> Bubbles => bubbles;
-    [SerializeField, ReadOnly] private bool onScreen;
+    [SerializeField, NaughtyAttributes.ReadOnly] private bool onScreen;
     public bool OnScreen => onScreen;
+    
+    private int _bubblesCount;
     
     public static Action onRowOffScreen;
 
     public void Initialize(int row, int bubblesCount)
     {
         this.row = row;
-        for (int i = 0; i < bubblesCount; i++)
+        _bubblesCount = bubblesCount;
+        SpawnBubble();
+    }
+    
+    public void SpawnBubble()
+    {
+        bubbles.ForEach(b => Destroy(b.gameObject));
+        bubbles.Clear();
+        for (int i = 0; i < _bubblesCount; i++)
         {
-            var bubble = Instantiate(bubblePrefab, transform);
+            var bubble = Instantiate(GetRandomBubble(), transform);
             bubble.Initialize(row, i, this);  
             bubbles.Add(bubble);
         };
     }
-    // Start is called before the first frame update
-    void Start()
+    
+    
+    private Bubble GetRandomBubble()
     {
-        
+        var combinedWeight = bubblePrefabs.Sum(b => b.DropWeight);
+        var randomValue = UnityEngine.Random.Range(0, combinedWeight);
+
+        float cumulativeWeight = 0;
+        foreach (var bubble in bubblePrefabs)
+        {
+            cumulativeWeight += bubble.DropWeight;
+            if (randomValue < cumulativeWeight)
+            {
+                return bubble;
+            }
+        }
+
+        return bubblePrefabs.Last(); // Fallback (should never hit)
     }
+
 
     // Update is called once per frame
     void Update()
@@ -58,7 +85,8 @@ public class BubbleRow : MonoBehaviour
     {
         var rectTransform = transform as RectTransform;
         var height = rectTransform.rect.height;
-        if (rectTransform.anchoredPosition.y - (height / 2) <= ProceduralManager.Instance.Canvas.pixelRect.height / 2)
+        if (rectTransform.anchoredPosition.y - (height / 2) <= ProceduralManager.Instance.Canvas.pixelRect.height / 2 && 
+            rectTransform.anchoredPosition.y + (height / 2) >= -ProceduralManager.Instance.Canvas.pixelRect.height / 2)
         {
             onScreen = true;
         }

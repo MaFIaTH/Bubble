@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6400863832573555621}
   - component: {fileID: 4041757141582256801}
   - component: {fileID: 4592180738564756548}
-  - component: {fileID: 2537837994019462497}
+  - component: {fileID: 785669882735251056}
   m_Layer: 5
-  m_Name: Bubble
+  m_Name: HyperSpeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,14 +59,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3984537, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.3750689, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 7e29a38f6c464b54db60abd795eeab49, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2537837994019462497
+--- !u!114 &785669882735251056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,11 +85,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4535774742612202157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f511ae7b59cbfc45900003847214ccc, type: 3}
+  m_Script: {fileID: 11500000, guid: c1628b5b2102ede498bcbb13ba41e38c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubbleType: 0
+  bubbleType: 6
+  dropWeight: 0
+  score: 100
   row: 0
   column: 0
   rowParent: {fileID: 0}
   popped: 0
+  speedPriority: 2
+  speedMultiplier: 2
+  duration: 5

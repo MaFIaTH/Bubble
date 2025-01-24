@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
+using Redcode.Moroutines;
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,13 +20,17 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     [SerializeField] private float rowSpeed;
     [SerializeField] private int loopAroundThreshold = 5;
     [SerializeField] private Canvas canvas;
-    
     [Header("Debug")]
     [SerializeField, ReadOnly] private int offScreenRows;
     [SerializeField, ReadOnly] private List<BubbleRow> rows = new List<BubbleRow>();
+    public List<BubbleRow> Rows => rows;
     [SerializeField, ReadOnly] private List<Image> backgroundImages = new List<Image>();
     public Canvas Canvas => canvas;
     public float RowSpeed => rowSpeed;
+    
+    public static Action onLoopAround;
+    
+    private KeyValuePair<Moroutine, int> _currentSpeedCoroutine;
 
     private void OnEnable()
     {
@@ -104,6 +109,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
                 row.transform.SetAsLastSibling();
                 row.transform.position = lastRow.transform.position + Vector3.down * rowSpacing;
                 row.Row = lastRow.Row + 1;
+                row.SpawnBubble();
             }
             else
             {
@@ -111,11 +117,45 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
                 row.Row -= loopAroundThreshold;
             }
         }
+        onLoopAround?.Invoke();
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveBackground();
+    }
+
+    public void ChangeSpeed(float multiplier, float duration, int priority)
+    {
+        Moroutine toDestroy = null;
+        if (_currentSpeedCoroutine.Key != null && _currentSpeedCoroutine.Value <= priority)
+        {
+            toDestroy = _currentSpeedCoroutine.Key;
+            _currentSpeedCoroutine.Key.Stop();
+        }
+        else if (_currentSpeedCoroutine.Key != null && _currentSpeedCoroutine.Value > priority)
+        {
+            return;
+        }
+
+        var originalSpeed = rowSpeed;
+        var speedCoroutine = Moroutine.Run(gameObject, ChangeSpeedCo(multiplier, duration));
+        speedCoroutine.OnCompleted((x) =>
+        {
+            x.Destroy();
+            _currentSpeedCoroutine = new KeyValuePair<Moroutine, int>(null, 0);
+        });
+        speedCoroutine.OnStopped((x) => rowSpeed = originalSpeed);
+        toDestroy?.Destroy();
+        _currentSpeedCoroutine = new KeyValuePair<Moroutine, int>(speedCoroutine, priority);
+    }
+
+    private IEnumerable ChangeSpeedCo(float multiplier, float duration)
+    {
+        var originalSpeed = rowSpeed;
+        rowSpeed *= multiplier;
+        yield return new WaitForSeconds(duration);
+        rowSpeed = originalSpeed;
     }
 }
