@@ -46,7 +46,7 @@ public class GameManager : MonoSingleton<GameManager>
             UpdateTimer();
         }
     }
-
+    
     private void UpdateTimer()
     {
         gameTimer -= Time.deltaTime;
