@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using MoreMountains.Feedbacks;
+using NaughtyAttributes;
 using Redcode.Moroutines;
 using TMPro;
 using UnityCommunity.UnitySingleton;
@@ -14,17 +15,28 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private float scoreMultiplier = 1;
     [SerializeField] private float gameTimer = 120;
     [SerializeField] private MMF_Player freezeFrameFeedback;
+    [SerializeField] private int testScore;
     public static int TotalScore;
     Moroutine _scoreMultiplierCoroutine;
     // Start is called before the first frame update
+
+    [Button("Save Score")]
+
+    private void SaveScore()
+    {
+        TotalScore = testScore;
+    }
     void Start()
     {
         scoreText.text = score.ToString();
     }
-
+ 
     private void Update()
     {
-        UpdateTimer();
+        if (ProceduralManager.Instance.IsGameStarted)
+        {
+            UpdateTimer();
+        }
     }
 
     private void UpdateTimer()
@@ -34,6 +46,8 @@ public class GameManager : MonoSingleton<GameManager>
         timerText.text = $"{Mathf.Floor(gameTimer / 60):00}:{(gameTimer % 60):00}";
         if (gameTimer <= 0)
         {
+            //Go to game ledderboard
+            ProceduralManager.Instance.IsGameStarted = false;
             Debug.Log("Game Over");
         }
     }

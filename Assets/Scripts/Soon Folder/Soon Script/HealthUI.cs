@@ -61,7 +61,7 @@ public class HealthUI : MonoSingleton<HealthUI>
     {
         if (HealthPoint.Instance.HealthPointValue < 0)
             return;
-       
+        HealthPoint.Instance.OnDamaged?.Invoke();
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue].sprite = heartDamageSprite;
     }
     
