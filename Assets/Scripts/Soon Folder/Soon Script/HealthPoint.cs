@@ -1,107 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityCommunity.UnitySingleton;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
-public class HealthPoint : MonoBehaviour
+public class HealthPoint : MonoSingleton<HealthPoint>
 {
-    private static HealthPoint _instance;
+    [SerializeField] private int defaultMaxHp = 3;
+    public int DefaultMaxHpValue => defaultMaxHp;
+    [SerializeField] private int maximumMaxHp = 5;
 
-    [SerializeField] private int minHp = 3;
-    public int MinHpValue => minHp;
-    [SerializeField] private int maxHp = 5;
-
-    private int maxNowHp = 3;
-    public int MaxNowHpValue => maxNowHp;
+    private int maxHpNow = 3;
+    public int MaxHpNowValue => maxHpNow;
 
     private int healthPoint = 3;
     public int HealthPointValue => healthPoint;
-
-
-    private int takeDamagePoint = 1;
-    public int TakeDamagePoint => takeDamagePoint;
-
-    public static HealthPoint Instance
+    
+    public void ChangeHealth(int value)
     {
-        get
+        healthPoint += value;
+        if (healthPoint > maxHpNow)
+            healthPoint = maxHpNow;
+        if (healthPoint < 0)
+            healthPoint = 0;
+        
+        if (value > 0)
         {
-            if (_instance == null)
-            {
-                Debug.LogError("HealthPoint is null");
-            }
-
-            return _instance;
+            HealthUI.Instance.TakeHealUI();
+        }
+        else
+        {
+            HealthUI.Instance.TakeDamageUI();
         }
     }
-
-    void Awake()
-    {
-        _instance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void TakeDamage()
-    {
-        if (healthPoint <= 0)
-            return;
-
-        healthPoint -= takeDamagePoint;
-
-    }
-
-    private void TakeHeal()
-    {
-        if (healthPoint > maxNowHp)
-            return;
-
-        healthPoint++;
-    }
-
-    public void TestHealHp()
-    {
-        TakeHeal();
-        HealthUI.Instance.TakeHealUI();
-    }
-
-    public void TestDamageHp()
-    {
-        TakeDamage();
-        HealthUI.Instance.TakeDamageUI();
-    }
-
-    public void TestUpMaxHealth()
-    {
-        if (maxNowHp >= maxHp)
-            return;
-
-        maxNowHp++;
-        TakeHeal();
-        HealthUI.Instance.CreateHealthUI();
-    }
-
-    public void TestResetMaxHp()
-    {
-        HealthUI.Instance.ResetHealthUI();
-        maxNowHp = minHp;
-        healthPoint = maxNowHp;
-    }
-
-    public void RestoreHpButton()
-    {
-        healthPoint = maxNowHp;
-        HealthUI.Instance.RestoreHp();
-    }
-
 }

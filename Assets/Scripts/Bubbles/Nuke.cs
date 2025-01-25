@@ -11,6 +11,7 @@ public class Nuke : Bubble
 
     private void NukeEverything()
     {
+        GameManager.Instance.FreezeFrame();
         ProceduralManager.Instance.Rows.ForEach(row =>
         {
             row.Bubbles.ForEach(bubble =>
