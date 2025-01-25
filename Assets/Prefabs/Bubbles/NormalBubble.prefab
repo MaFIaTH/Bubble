@@ -91,6 +91,7 @@ MonoBehaviour:
   bubbleType: 1
   dropWeight: 1
   score: 100
+  feedbacks: {fileID: 0}
   row: 0
   column: 0
   rowParent: {fileID: 0}

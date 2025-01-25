@@ -15,12 +15,15 @@ public class DiagonalBomb : Bubble
     [SerializeField] private Sprite leftDiagonalBomb;
     [SerializeField] private Sprite rightDiagonalBomb;
     [SerializeField] private int radius = 2;
+    [SerializeField] private Transform bombEffect;
+    [SerializeField] private float effectRotation = 30;
 
     public override void Initialize(int row, int column, BubbleRow rowParent)
     {
         base.Initialize(row, column, rowParent);
         direction = Random.Range(0, 2) == 0 ? DiagonalDirection.Right : DiagonalDirection.Left;
         image.color = direction == DiagonalDirection.Left ? Color.red : Color.blue;
+        bombEffect.Rotate(0, 0, direction == DiagonalDirection.Left ? effectRotation : -effectRotation);
     }
     protected override void ActivateAbility()
     {

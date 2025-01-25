@@ -107,7 +107,10 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
                 rows.RemoveAt(i);
                 rows.Add(row);
                 row.transform.SetAsLastSibling();
-                row.transform.position = lastRow.transform.position + Vector3.down * rowSpacing;
+                //row.transform.position = lastRow.transform.position + Vector3.down * rowSpacing;
+                var rectTransform = row.transform as RectTransform;
+                var lastRectTransform = lastRow.transform as RectTransform;
+                rectTransform.anchoredPosition = lastRectTransform.anchoredPosition + Vector2.down * rowSpacing;
                 row.Row = lastRow.Row + 1;
                 row.SpawnBubble();
             }
