@@ -4,6 +4,7 @@ using Dan.Main;
 using Dan.Models;
 using DG.Tweening;
 using NaughtyAttributes;
+using Redcode.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,9 @@ public class LeaderboardManager : MonoBehaviour
     [Header("Score")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text newHighScoreText;
+    
+    [Header("Top 3")]
+    [SerializeField] private PlayerEntry[] top3Entries;
     
     [Header("Notification")]
     [SerializeField] private TMP_Text notificationText;
@@ -68,15 +72,20 @@ public class LeaderboardManager : MonoBehaviour
         ShowScore();
         //SoundManager.Instance.PlayBGM(BGMTypes.Leaderboard, out _bgmAudioSource);
         //SoundManager.Instance.PlaySoundFX(SoundFXTypes.Celebrate, out _);
-        leaderboardTitle.gameObject.SetActive(false);
+        submitButton.onClick.AddListener(SubmitButton);
+        personalButton.onClick.AddListener(PersonalButton);
+        refreshButton.onClick.AddListener(RefreshButton);
+        deleteButton.onClick.AddListener(DeleteButton);
+        //leaderboardTitle.gameObject.SetActive(false);
         newHighScoreText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(true);
-        scoreText.text = LoadSceneManager.Instance.Score.ToString("N0");
+        scoreText.text = GameManager.TotalScoreValue.ToString("N0");
         scoreText.transform.localScale = Vector3.zero;
         scoreText.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
         maxEntriesText.text = $"Top {maxEntries}";
         notificationText.transform.localScale = Vector3.zero;
         notificationText.text = "";
+        top3Entries.ForEach(a => a.gameObject.SetActive(false));
         GetEntries();
         if (!SceneManager.GetSceneByName(SceneTypes.MainMenu.ToString()).isLoaded) return;
         scoreText.gameObject.SetActive(false);
@@ -131,7 +140,7 @@ public class LeaderboardManager : MonoBehaviour
             ShowNotification("Please enter a username");
             return;
         }
-        UploadEntry(usernameInput.text, LoadSceneManager.Instance.Score);
+        UploadEntry(usernameInput.text, GameManager.TotalScoreValue);
     }
 
     public void DeleteEntry()
@@ -189,7 +198,25 @@ public class LeaderboardManager : MonoBehaviour
     private void OnGetEntries(Entry[] entries, bool scrollToSelf = false)
     {
         ActivateSubmission(true);
-        for (var i = 0; i < maxEntries; i++)
+        //Top 3 entries
+        for (var i = 0; i < 3; i++)
+        {
+            if (i < entries.Length)
+            {
+                top3Entries[i].SetEntry(entries[i].Rank, entries[i].Username, entries[i].Score);
+                top3Entries[i].gameObject.SetActive(true);
+                if (entries[i].IsMine())
+                {
+                    top3Entries[i].SetTextColor(selfEntryColor);
+                }
+            }
+            else
+            {
+                top3Entries[i].gameObject.SetActive(false);
+            }
+        }
+        //The rest of the entries
+        for (var i = 3; i < maxEntries; i++)
         {
             if (i >= entries.Length) break;
             CreateEntryDisplay(entries[i]);
@@ -266,14 +293,14 @@ public class LeaderboardManager : MonoBehaviour
         ActivateSubmission(true);
         if (checkNewHighScore)
         {
-            int score = LoadSceneManager.Instance.Score;
+            int score = GameManager.TotalScoreValue;
             if (score < entry.Score) return;
             newHighScoreText.gameObject.SetActive(true);
             string newHighScoreString = score <= 0 ? "Seriously?" : "New High!";
             newHighScoreText.text = newHighScoreString;
             newHighScoreText.transform.localScale = Vector3.zero;
             newHighScoreText.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce);
-            if (score > 0) SoundManager.Instance.PlaySoundFX(SoundFXTypes.NewHighScore, out _);
+            //if (score > 0) SoundManager.Instance.PlaySoundFX(SoundFXTypes.NewHighScore, out _);
             return;
         }
         if (entry.Rank == 0)
@@ -311,7 +338,7 @@ public class LeaderboardManager : MonoBehaviour
         if (_loadMainMenuSceneCoroutine != null) return;
         // SoundManager.Instance.PlaySoundFX(SoundFXTypes.SceneTransition, out _);
         // SoundManager.Instance.StopSound(_bgmAudioSource);
-        LoadSceneManager.Instance.Score = 0;
+        GameManager.TotalScoreValue = 0;
         _loadMainMenuSceneCoroutine = StartCoroutine(LoadMainMenuScene());
     }
     

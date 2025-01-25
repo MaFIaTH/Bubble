@@ -11,14 +11,14 @@ public class PlayerEntry : MonoBehaviour
     
     public void SetEntry(int rank, string playerName, int score)
     {
-        rankText.text = rank.ToString();
+        if (rankText) rankText.text = rank.ToString();
         nameText.text = playerName;
         scoreText.text = score.ToString("N0");
     }
     
     public void SetTextColor(Color color)
     {
-        rankText.color = color;
+        if (rankText) rankText.color = color;
         nameText.color = color;
         scoreText.color = color;
     }

@@ -22,7 +22,8 @@ public class DiagonalBomb : Bubble
     {
         base.Initialize(row, column, rowParent);
         direction = Random.Range(0, 2) == 0 ? DiagonalDirection.Right : DiagonalDirection.Left;
-        image.color = direction == DiagonalDirection.Left ? Color.red : Color.blue;
+        //image.color = direction == DiagonalDirection.Left ? Color.red : Color.blue;
+        image.sprite = direction == DiagonalDirection.Left ? leftDiagonalBomb : rightDiagonalBomb;
         bombEffect.Rotate(0, 0, direction == DiagonalDirection.Left ? effectRotation : -effectRotation);
     }
     protected override void ActivateAbility()
