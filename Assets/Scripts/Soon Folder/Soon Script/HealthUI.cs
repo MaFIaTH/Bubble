@@ -60,9 +60,6 @@ public class HealthUI : MonoBehaviour
         {
             heartCreatePrefab.Add(Instantiate(heartNormalPrefab, heartPosition[HealthPoint.Instance.MaxNowHpValue -1].position, Quaternion.identity, transform));
         }
-        
-        
-        
     }
     
     // รอแก้ ไม่สามารถลบได้
@@ -78,17 +75,26 @@ public class HealthUI : MonoBehaviour
         }
     }
     
+    public void RestoreHp()
+    {
+        for (int i = 0; i < HealthPoint.Instance.MaxNowHpValue; i++)
+        {
+            heartCreatePrefab[i].GetComponent<Image>().sprite = heartNormalSprite;
+            Debug.Log("Restore Hp" + HealthPoint.Instance.MaxNowHpValue);
+        }
+    }
+    
     //Break Heart Change
     public void TakeDamageUI()
     {
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue].GetComponent<Image>().sprite = heartDamageSprite;
-        Debug.Log("Take Damage");
+        Debug.Log("Take Damage" + HealthPoint.Instance.HealthPointValue);
     }
     
     //Normal Heart Change
     public void TakeHealUI()
     {
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].GetComponent<Image>().sprite = heartNormalSprite;
-        Debug.Log("Take Heal");
+        Debug.Log("Take Heal" + HealthPoint.Instance.HealthPointValue);
     }
 }
