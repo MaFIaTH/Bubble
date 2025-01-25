@@ -80,7 +80,6 @@ public class HealthUI : MonoBehaviour
         for (int i = 0; i < HealthPoint.Instance.MaxNowHpValue; i++)
         {
             heartCreatePrefab[i].GetComponent<Image>().sprite = heartNormalSprite;
-            Debug.Log("Restore Hp" + HealthPoint.Instance.MaxNowHpValue);
         }
     }
     
@@ -88,13 +87,11 @@ public class HealthUI : MonoBehaviour
     public void TakeDamageUI()
     {
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue].GetComponent<Image>().sprite = heartDamageSprite;
-        Debug.Log("Take Damage" + HealthPoint.Instance.HealthPointValue);
     }
     
     //Normal Heart Change
     public void TakeHealUI()
     {
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].GetComponent<Image>().sprite = heartNormalSprite;
-        Debug.Log("Take Heal" + HealthPoint.Instance.HealthPointValue);
     }
 }

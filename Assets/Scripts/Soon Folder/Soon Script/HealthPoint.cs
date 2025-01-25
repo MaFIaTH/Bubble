@@ -89,8 +89,6 @@ public class HealthPoint : MonoBehaviour
         maxNowHp++;
         TakeHeal();
         HealthUI.Instance.CreateHealthUI();
-
-        Debug.Log("Max Health Up " + maxNowHp);
     }
 
     public void TestResetMaxHp()
@@ -98,8 +96,6 @@ public class HealthPoint : MonoBehaviour
         HealthUI.Instance.ResetHealthUI();
         maxNowHp = minHp;
         healthPoint = maxNowHp;
-
-        Debug.Log("Max Health Reset " + maxNowHp);
     }
 
     public void RestoreHpButton()
