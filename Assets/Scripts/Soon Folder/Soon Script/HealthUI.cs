@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,29 +39,53 @@ public class HealthUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CreateHealthUI();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        CreateHealthUI();
     }
     
-    private void CreateHealthUI()
+    public void CreateHealthUI()
     {
-        for (int i = 0; i < HealthPoint.Instance.MaxHpValue; i++)
+        if (HealthPoint.Instance.MaxNowHpValue == HealthPoint.Instance.MinHpValue)
         {
-            Instantiate(heartNormalPrefab, heartPosition[i].position, Quaternion.identity, transform);
+            for (int i = 0; i < HealthPoint.Instance.MaxNowHpValue; i++)
+            {
+                heartCreatePrefab.Add(Instantiate(heartNormalPrefab, heartPosition[i].position, Quaternion.identity, transform));
+            }
+        }
+        else if (HealthPoint.Instance.MaxNowHpValue > HealthPoint.Instance.MinHpValue)
+        {
+            heartCreatePrefab.Add(Instantiate(heartNormalPrefab, heartPosition[HealthPoint.Instance.MaxNowHpValue -1].position, Quaternion.identity, transform));
+        }
+        
+        
+        
+    }
+    
+    // รอแก้ ไม่สามารถลบได้
+    public void ResetHealthUI()
+    {
+        for (int i = 0; i < HealthPoint.Instance.MaxNowHpValue; i++)
+        {
+            if (i > HealthPoint.Instance.MinHpValue)
+            {
+                Destroy(heartCreatePrefab[i]);
+                Debug.Log("Reset Health UI " + i);
+            }
         }
     }
     
+    //Break Heart Change
     public void TakeDamageUI()
     {
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue].GetComponent<Image>().sprite = heartDamageSprite;
         Debug.Log("Take Damage");
     }
     
+    //Normal Heart Change
     public void TakeHealUI()
     {
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].GetComponent<Image>().sprite = heartNormalSprite;

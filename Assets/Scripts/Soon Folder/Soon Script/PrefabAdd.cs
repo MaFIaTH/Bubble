@@ -14,6 +14,6 @@ public class PrefabAdd : MonoBehaviour
     
     public void CreatePrefabObject()
     {
-        HealthUI.Instance.heartCreatePrefab.Add(gameObject); 
+        //HealthUI.Instance.heartCreatePrefab.Add(gameObject); 
     }
 }

@@ -6,8 +6,12 @@ public class HealthPoint : MonoBehaviour
 {
     private static HealthPoint _instance;
     
-    private int maxHp = 3;
-    public int MaxHpValue => maxHp;
+    [SerializeField] private int minHp = 3;
+    public int MinHpValue => minHp;
+    [SerializeField] private int maxHp = 5;
+    
+    private int maxNowHp = 3;
+    public int MaxNowHpValue => maxNowHp;
     
     private int healthPoint = 3;
     public int HealthPointValue => healthPoint;
@@ -42,7 +46,7 @@ public class HealthPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //HealthPointTest();
+        
     }
     
     private void TakeDamage()
@@ -51,46 +55,47 @@ public class HealthPoint : MonoBehaviour
             return;
    
         healthPoint -= takeDamagePoint;
-        HealthUI.Instance.TakeDamageUI();
         
     }
     
     private void TakeHeal()
     {
-        if (healthPoint >= maxHp)
+        if (healthPoint > maxNowHp)
             return;
         
         healthPoint++;
+    }
+    
+    public void TestHealHp()
+    {
+        TakeHeal();
         HealthUI.Instance.TakeHealUI();
     }
     
-    /*
-    private void HealthPointTest()
+    public void TestDamageHp()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            TakeDamage();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            TakeHeal();
-        }
+        TakeDamage();
+        HealthUI.Instance.TakeDamageUI();
     }
-    */
     
     public void TestUpMaxHealth()
     {
-        if (maxHp >= 5)
+        if (maxNowHp >= maxHp)
             return;
         
-        maxHp++;
+        maxNowHp++;
         TakeHeal();
-        Debug.Log("Max Health Up" + maxHp);
+        HealthUI.Instance.CreateHealthUI();
+
+        Debug.Log("Max Health Up " + maxNowHp);
     }
     
-    public void TestDownMaxHealth()
+    public void TestResetMaxHp()
     {
-        maxHp--;
-        Debug.Log("Max Health Down" + maxHp);
+        maxNowHp = minHp;
+        TakeDamage();
+        HealthUI.Instance.ResetHealthUI();
+        
+        Debug.Log("Max Health Reset " + maxNowHp);
     }
 }
