@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleType: 4096
-  dropWeight: 0
+  dropWeight: 0.05
   score: 100
   row: 0
   column: 0

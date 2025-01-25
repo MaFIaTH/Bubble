@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class SelectCardManager : MonoBehaviour
 {
+    [SerializeField] private GameObject CardUI ;
+    [SerializeField] private GameObject ButtonUI ;
     [SerializeField] private PassiveCard[] passiveCards;
     [SerializeField] private PassiveCardScriptableObject[] passiveCardScriptableObjects;
     private List<PassiveCardScriptableObject> SelectedCard = new List<PassiveCardScriptableObject>(){null,null,null};
@@ -21,6 +23,26 @@ public class SelectCardManager : MonoBehaviour
     {
         //
         RandomCard();
+    }
+
+    public void ConfirmPassive()
+    {
+        int index = 0;
+        switch (ChooseCard.Instance.cardID)
+        {
+            case CardID.Card1:
+                index = 0;
+                break;
+            case CardID.Card2:
+                index = 1;
+                break;
+            case CardID.Card3:
+                index = 2;
+                break;
+        }
+        PassiveManager.Instance.SetPassive(SelectedCard[index].passive);
+        CardUI.SetActive(false);
+        ButtonUI.SetActive(false);
     }
     private void RandomCard()
     {

@@ -27,35 +27,12 @@ public class PassiveCard : Card  ,IPointerClickHandler
     }
     public void SetCardData(PassiveCardScriptableObject cardData)
     {
+        cardIcon.sprite = cardData.BubbleImage;
         passiveCardData = cardData;
         cardNameText.text = cardData.cardName;
         cardDecriptionText.text = cardData.cardDescription;
         costValue.text = cardData.cardCost.ToString();
     }
-
-    // public void OnPointerEnter(PointerEventData eventData)
-    // {
-    //     if (sequence.IsActive() )
-    //     {
-    //         return;
-    //     }
-    //     panelRectTransform.SetAsLastSibling();
-    //     sequence = DOTween.Sequence()
-    //         .Append(transform.GetComponent<RectTransform>().DOAnchorPos(new Vector2(538f, -1069f), 0.5f))
-    //         .Join(transform.DOScale(1.8f, 0.8f));
-    //     
-    // }
-
-    // public void OnPointerExit(PointerEventData eventData)
-    // {
-    //     if (sequence.IsActive())
-    //     {
-    //         return;
-    //     }
-    //     sequence = DOTween.Sequence()
-    //         .Append(transform.GetComponent<RectTransform>().DOAnchorPos(new Vector2(OriginalPos.x,OriginalPos.y),0.5f))
-    //         .Join(transform.DOScale(1f, 0.5f));
-    // }
     
     public void Selected()
     {
