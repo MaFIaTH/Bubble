@@ -73,6 +73,7 @@ public class HealthUI : MonoBehaviour
             if (i > HealthPoint.Instance.MinHpValue)
             {
                 Destroy(heartCreatePrefab[i -1]);
+                heartCreatePrefab.RemoveAt(i -1);
             }
         }
     }

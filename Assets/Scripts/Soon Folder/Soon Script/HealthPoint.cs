@@ -94,7 +94,6 @@ public class HealthPoint : MonoBehaviour
     {
         HealthUI.Instance.ResetHealthUI();
         maxNowHp = minHp;
-        TakeDamage();
         
         Debug.Log("Max Health Reset " + maxNowHp);
     }
