@@ -34,8 +34,7 @@ public class HealthPoint : MonoSingleton<HealthPoint>
     {
         if (healthPoint <= 0)
         {
-            ProceduralManager.Instance.IsGameStarted = false;
-            Debug.Log("Die");
+            GameManager.Instance.GameOver();
         }
     }
     public void ChangeHealth(int value)

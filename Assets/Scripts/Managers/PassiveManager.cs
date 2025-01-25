@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
 
-public class PassiveManager : PersistentMonoSingleton<PassiveManager>
+public class PassiveManager : MonoSingleton<PassiveManager>
 {
     [SerializeField] private List<Passive> passives = new List<Passive>();
     public List<Passive> Passives => passives;

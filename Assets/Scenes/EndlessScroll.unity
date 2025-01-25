@@ -1350,9 +1350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc5b8bdc401f6048b857ca5758a6eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardUI: {fileID: 0}
-  ButtonUI: {fileID: 0}
-  Background: {fileID: 0}
+  cardUI: {fileID: 0}
+  buttonUI: {fileID: 0}
+  background: {fileID: 0}
   passiveCards:
   - {fileID: 0}
   - {fileID: 0}
@@ -2449,8 +2449,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Score:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d6e39114599444d4fb644240287886c2, type: 2}
+  m_sharedMaterial: {fileID: 2352554226062042124, guid: d6e39114599444d4fb644240287886c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2919,6 +2919,7 @@ MonoBehaviour:
   offScreenRows: 0
   rows: []
   backgroundImages: []
+  IsGameStarted: 0
 --- !u!4 &1365270990
 Transform:
   m_ObjectHideFlags: 0
@@ -2963,9 +2964,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc5b8bdc401f6048b857ca5758a6eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardUI: {fileID: 1105194268}
-  ButtonUI: {fileID: 642692275}
-  Background: {fileID: 2011552867}
+  cardUI: {fileID: 0}
+  buttonUI: {fileID: 0}
+  background: {fileID: 0}
   passiveCards:
   - {fileID: 246045285}
   - {fileID: 518830579}
@@ -4412,8 +4413,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Timer:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d6e39114599444d4fb644240287886c2, type: 2}
+  m_sharedMaterial: {fileID: 2352554226062042124, guid: d6e39114599444d4fb644240287886c2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4707,6 +4708,7 @@ MonoBehaviour:
   scoreMultiplier: 1
   gameTimer: 120
   freezeFrameFeedback: {fileID: 1667642637}
+  testScore: 0
 --- !u!4 &2024653575
 Transform:
   m_ObjectHideFlags: 0
@@ -4802,6 +4804,9 @@ MonoBehaviour:
   heartNormalSprite: {fileID: 21300000, guid: d2976643285b5cb42981d9433d686a7d, type: 3}
   heartDamageSprite: {fileID: 21300000, guid: d4fdbf051274613489ca98a99eade175, type: 3}
   heartCreatePrefab: []
+  PassiveUpgradeUI: {fileID: 0}
+  PassiveUpgradeButton: {fileID: 0}
+  HpUI: {fileID: 0}
 --- !u!114 &2101445485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4816,6 +4821,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMaxHp: 3
   maximumMaxHp: 5
+  nonHp: []
+  levelText: {fileID: 0}
+  levelCost: 
+  levelCostText: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

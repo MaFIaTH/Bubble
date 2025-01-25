@@ -97,6 +97,7 @@ public abstract class Bubble : MonoBehaviour, IPointerClickHandler
         }
         else
         {
+            Debug.Log("This bubbleType is " + bubbleType);
             PassiveManager.Instance.ApplyPassives(PassiveType.Score, bombType, ref finalScore);
         }
         GameManager.Instance.ChangeScore(Mathf.RoundToInt(finalScore));

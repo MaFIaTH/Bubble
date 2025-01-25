@@ -69,7 +69,7 @@ public class SceneManagerPersistent : PersistentMonoSingleton<SceneManagerPersis
 {
     [Header("Scenes")]
     [SerializeField] private SceneField mainMenu;
-    [SerializeField] private SceneField gamePlay;
+    [SerializeField] private SceneField gameplay;
     [SerializeField] private SceneField loadingScene;
     [SerializeField] private SceneField leaderboard;
 
@@ -101,7 +101,10 @@ public class SceneManagerPersistent : PersistentMonoSingleton<SceneManagerPersis
                 sceneName = mainMenu;
                 break;
             case SceneTypes.Gameplay:
-                sceneName = gamePlay;
+                sceneName = gameplay;
+                break;
+            case SceneTypes.Leaderboard:
+                sceneName = leaderboard;
                 break;
             default:
                 sceneName = mainMenu;

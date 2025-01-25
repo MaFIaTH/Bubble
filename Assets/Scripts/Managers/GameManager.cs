@@ -6,6 +6,7 @@ using Redcode.Moroutines;
 using TMPro;
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -16,6 +17,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private float gameTimer = 120;
     [SerializeField] private MMF_Player freezeFrameFeedback;
     [SerializeField] private int testScore;
+    [SerializeField] private CanvasGroup gameCanvasGroup;
     public static int TotalScore;
     public static int TotalScoreValue
     {
@@ -49,19 +51,27 @@ public class GameManager : MonoSingleton<GameManager>
     {
         gameTimer -= Time.deltaTime;
         // float to MM:SS format
-        timerText.text = $"{Mathf.Floor(gameTimer / 60):00}:{(gameTimer % 60):00}";
         if (gameTimer <= 0)
         {
+            gameTimer = 0;
             //Go to game ledderboard
-            ProceduralManager.Instance.IsGameStarted = false;
-            Debug.Log("Game Over");
+            GameOver();
         }
+        timerText.text = $"{Mathf.Floor(gameTimer / 60):00}:{(gameTimer % 60):00}";
+    }
+
+    public void GameOver()
+    {
+        ProceduralManager.Instance.IsGameStarted = false;
+        TotalScore = score;
+        gameCanvasGroup.interactable = false;
+        SceneManagerPersistent.Instance.LoadNextScene(SceneTypes.Leaderboard, LoadSceneMode.Additive, false);
     }
 
     public void ChangeScore(int value)
     {
         score += Mathf.RoundToInt(value * scoreMultiplier);
-        TotalScore += score;
+        TotalScore = score;
         scoreText.text = score.ToString();
     }
     
@@ -85,5 +95,10 @@ public class GameManager : MonoSingleton<GameManager>
         scoreMultiplier = value;
         yield return new WaitForSeconds(duration);
         scoreMultiplier = originalMultiplier;
+    }
+    
+    public void ToMainMenu()
+    {
+        SceneManagerPersistent.Instance.LoadNextScene(SceneTypes.MainMenu, LoadSceneMode.Additive, false);
     }
 }

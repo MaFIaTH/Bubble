@@ -54,6 +54,7 @@ public class PassiveCard : Card  ,IPointerClickHandler
         if (this == ChooseCard.Instance.lastCard )
         {
             panelRectTransform.SetAsLastSibling();
+            if (sequence.IsActive()) sequence.Kill();
             sequence = DOTween.Sequence()
                 .Append(transform.GetComponent<RectTransform>().DOAnchorPos(new Vector2(538f, -1069f), 0.5f))
                 .Join(transform.DOScale(1.8f, 0.8f));
@@ -64,6 +65,7 @@ public class PassiveCard : Card  ,IPointerClickHandler
     {
         if (this == ChooseCard.Instance.lastCard )
         {
+            if (sequence.IsActive()) sequence.Kill();
             sequence = DOTween.Sequence()
                 .Append(transform.GetComponent<RectTransform>().DOAnchorPos(new Vector2(OriginalPos.x,OriginalPos.y),0.5f))
                 .Join(transform.DOScale(1f, 0.5f));

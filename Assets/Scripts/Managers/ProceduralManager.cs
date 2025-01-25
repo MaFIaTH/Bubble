@@ -58,6 +58,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     {
         SpawnBackground();
         SpawnRows();
+        GameManager.TotalScore = 0;
         IsGameStarted = true;
     }
     

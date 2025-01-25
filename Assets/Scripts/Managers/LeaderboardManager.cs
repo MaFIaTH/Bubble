@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Dan.Main;
 using Dan.Models;
 using DG.Tweening;
@@ -19,7 +20,7 @@ public class LeaderboardManager : MonoBehaviour
     
     [Header("Top 3")]
     [SerializeField] private PlayerEntry[] top3Entries;
-    
+
     [Header("Notification")]
     [SerializeField] private TMP_Text notificationText;
     [SerializeField] private float notificationDuration = 3f;
@@ -37,6 +38,8 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private Button personalButton;
     [SerializeField] private Button refreshButton;
     [SerializeField] private Button deleteButton;
+    [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Button retryButton;
     //[SerializeField] private Button retryButton;
     
     // [Header("Scene Transition")]
@@ -70,12 +73,15 @@ public class LeaderboardManager : MonoBehaviour
         //     
         // });
         ShowScore();
+        Debug.Log($"TSV: {GameManager.TotalScoreValue}");
         //SoundManager.Instance.PlayBGM(BGMTypes.Leaderboard, out _bgmAudioSource);
         //SoundManager.Instance.PlaySoundFX(SoundFXTypes.Celebrate, out _);
         submitButton.onClick.AddListener(SubmitButton);
         personalButton.onClick.AddListener(PersonalButton);
         refreshButton.onClick.AddListener(RefreshButton);
         deleteButton.onClick.AddListener(DeleteButton);
+        mainMenuButton.onClick.AddListener(MainMenuButton);
+        retryButton.onClick.AddListener(RetryButton);
         //leaderboardTitle.gameObject.SetActive(false);
         newHighScoreText.gameObject.SetActive(false);
         scoreText.gameObject.SetActive(true);
@@ -93,7 +99,7 @@ public class LeaderboardManager : MonoBehaviour
         usernameInput.gameObject.SetActive(false);
         submitButton.gameObject.SetActive(false);
         deleteButton.gameObject.SetActive(false);
-        //retryButton.gameObject.SetActive(false);
+        retryButton.gameObject.SetActive(false);
     }
 
     private void ShowScore()
@@ -205,8 +211,10 @@ public class LeaderboardManager : MonoBehaviour
             {
                 top3Entries[i].SetEntry(entries[i].Rank, entries[i].Username, entries[i].Score);
                 top3Entries[i].gameObject.SetActive(true);
+                top3Entries[i].ResetTextColor();
                 if (entries[i].IsMine())
                 {
+                    _selfEntry = top3Entries[i];
                     top3Entries[i].SetTextColor(selfEntryColor);
                 }
             }
@@ -231,6 +239,10 @@ public class LeaderboardManager : MonoBehaviour
             Debug.Log($"Normalized Position: {normalizedPosition}");
             scrollRect.verticalNormalizedPosition = normalizedPosition;
             //SoundManager.Instance.PlaySoundFX(SoundFXTypes.NameTag, out _);
+        }
+        else if (top3Entries.Contains(_selfEntry))
+        {
+            ShowNotification($"Congrats on the top 3!");
         }
         else
         {
@@ -334,33 +346,21 @@ public class LeaderboardManager : MonoBehaviour
     
     public void MainMenuButton()
     {
-        if (SceneManager.sceneCount > 1) return;
-        if (_loadMainMenuSceneCoroutine != null) return;
-        // SoundManager.Instance.PlaySoundFX(SoundFXTypes.SceneTransition, out _);
-        // SoundManager.Instance.StopSound(_bgmAudioSource);
-        GameManager.TotalScoreValue = 0;
-        _loadMainMenuSceneCoroutine = StartCoroutine(LoadMainMenuScene());
-    }
-    
-    private IEnumerator LoadMainMenuScene()
-    {
-        // AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync(SceneNames.MainMenu.ToString(), LoadSceneMode.Additive);
-        // while (!loadSceneAsync.isDone)
-        // {
-        //     yield return null;
-        // }
-        // canvas.transform.DOLocalMove(canvasSlideDistance, 3f).SetEase(Ease.OutQuart).OnComplete(() =>
-        // {
-        //     SceneManager.UnloadSceneAsync(SceneNames.Leaderboard.ToString());
-        // });
-        yield return null;
+        // if (SceneManager.sceneCount > 1) return;
+        // if (_loadMainMenuSceneCoroutine != null) return;
+        // // SoundManager.Instance.PlaySoundFX(SoundFXTypes.SceneTransition, out _);
+        // // SoundManager.Instance.StopSound(_bgmAudioSource);
+        // GameManager.TotalScoreValue = 0;
+        // _loadMainMenuSceneCoroutine = StartCoroutine(LoadMainMenuScene());
+        SceneManagerPersistent.Instance.LoadNextScene(SceneTypes.MainMenu, LoadSceneMode.Additive, false);
     }
     public void RetryButton()
     {
-        if (SceneManager.sceneCount > 1) return;
+        //if (SceneManager.sceneCount > 1) return;
         // LoadSceneManager.Instance.Retry = true;
         // LoadSceneManager.Instance.Score = 0;
         // SoundManager.Instance.StopSound(_bgmAudioSource);
         // SceneManager.LoadScene(SceneNames.Game.ToString());
+        SceneManagerPersistent.Instance.LoadNextScene(SceneTypes.Gameplay, LoadSceneMode.Additive, false);
     }
 }
