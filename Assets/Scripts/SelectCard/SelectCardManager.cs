@@ -6,13 +6,13 @@ using Random = UnityEngine.Random;
 
 public class SelectCardManager : MonoBehaviour
 {
-    [SerializeField] private GameObject CardUI ;
-    [SerializeField] private GameObject ButtonUI;
-    [SerializeField] private GameObject Background;
+    [SerializeField] private GameObject cardUI ;
+    [SerializeField] private GameObject buttonUI;
+    [SerializeField] private GameObject background;
     [SerializeField] private PassiveCard[] passiveCards;
     [SerializeField] private PassiveCardScriptableObject[] passiveCardScriptableObjects;
-    private List<PassiveCardScriptableObject> SelectedCard = new List<PassiveCardScriptableObject>(){null,null,null};
-    private List<PassiveCardScriptableObject> PreviousSelectedCard = new List<PassiveCardScriptableObject>(){null,null,null};
+    private List<PassiveCardScriptableObject> selectedCard = new List<PassiveCardScriptableObject>(){null,null,null};
+    private List<PassiveCardScriptableObject> previousSelectedCard = new List<PassiveCardScriptableObject>(){null,null,null};
     
     
     private void Start()
@@ -22,7 +22,6 @@ public class SelectCardManager : MonoBehaviour
 
     public void RerollCards()
     {
-        //
         RandomCard();
     }
 
@@ -41,14 +40,14 @@ public class SelectCardManager : MonoBehaviour
                 index = 2;
                 break;
         }
-        PassiveManager.Instance.SetPassive(SelectedCard[index].passive);
-        CardUI.SetActive(false);
-        ButtonUI.SetActive(false);
-        Background.SetActive(false);
+        PassiveManager.Instance.SetPassive(selectedCard[index].passive);
+        cardUI.SetActive(false);
+        buttonUI.SetActive(false);
+        background.SetActive(false);
     }
     private void RandomCard()
     {
-        SelectedCard.Clear();
+        selectedCard.Clear();
         int index = 0;
         for (int i = 0; i < 3;)
         {
@@ -57,19 +56,19 @@ public class SelectCardManager : MonoBehaviour
             {
                 continue;
             }
-            SelectedCard.Add(passiveCardScriptableObjects[randomCard]);
+            selectedCard.Add(passiveCardScriptableObjects[randomCard]);
             passiveCards[index].SetCardData(passiveCardScriptableObjects[randomCard]);
             index++;
             i++;
         }
-        PreviousSelectedCard = new List<PassiveCardScriptableObject>(SelectedCard);
+        previousSelectedCard = new List<PassiveCardScriptableObject>(selectedCard);
     }
 
     private bool IsDuplicate(PassiveCardScriptableObject card)
     {
-        if (PreviousSelectedCard != null)
+        if (previousSelectedCard != null)
         {
-            foreach (var selectedCard in PreviousSelectedCard)
+            foreach (var selectedCard in previousSelectedCard)
             {
                 if (selectedCard == card)
                 {
@@ -77,14 +76,13 @@ public class SelectCardManager : MonoBehaviour
                 }
             }   
         }
-        foreach (var selectedCard in SelectedCard)
+        foreach (var selectedCard in selectedCard)
         {
             if (selectedCard == card)
             {
                 return true;
             }
         }
-        
         return false;
     }
     

@@ -8,10 +8,13 @@ using UnityEngine.UI;
 public class HealthUI : MonoSingleton<HealthUI>
 {
     [SerializeField] private GameObject heartNormalPrefab;
-    [SerializeField] private Sprite heartNormalSprite;
+    [SerializeField] public Sprite heartNormalSprite;
     [SerializeField] private Sprite heartDamageSprite;
     [SerializeField] public List<Image> heartCreatePrefab = new List<Image>();
 
+    [SerializeField] private GameObject PassiveUpgradeUI;
+    [SerializeField] private GameObject PassiveUpgradeButton;
+    [SerializeField] private GameObject HpUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,14 +61,33 @@ public class HealthUI : MonoSingleton<HealthUI>
     {
         if (HealthPoint.Instance.HealthPointValue < 0)
             return;
+       
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue].sprite = heartDamageSprite;
     }
     
     //Normal Heart Change
     public void TakeHealUI()
     {
+        Debug.Log(PassiveManager.Instance.Passives[0].PassiveType );
         if (HealthPoint.Instance.HealthPointValue > HealthPoint.Instance.MaxHpNowValue)
             return;
+        
+        if (PassiveManager.Instance.Passives[0].PassiveType == PassiveType.Heal)
+        {
+            for (int i = 1; i < HealthPoint.Instance.HealthPointValue; i++)
+            {
+                Debug.Log(i);
+                heartCreatePrefab[HealthPoint.Instance.HealthPointValue - i].sprite = heartNormalSprite;
+            }
+            return;
+        }
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].sprite = heartNormalSprite;
+    }
+
+    public void nextUpgradePassive()
+    {
+        PassiveUpgradeUI.SetActive(true);
+        PassiveUpgradeButton.SetActive(true);
+        HpUI.SetActive(false);
     }
 }

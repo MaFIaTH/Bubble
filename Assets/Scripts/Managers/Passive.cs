@@ -34,7 +34,6 @@ public class Passive
         {
             return originalValue;
         }
-        Debug.Log($"Processing passive {passiveType} with value {value} and modifier type {modifierType}");
         switch (modifierType)
         {
             case ModifierType.Additive:

@@ -14,7 +14,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private float scoreMultiplier = 1;
     [SerializeField] private float gameTimer = 120;
     [SerializeField] private MMF_Player freezeFrameFeedback;
-
+    public static int TotalScore;
     Moroutine _scoreMultiplierCoroutine;
     // Start is called before the first frame update
     void Start()
@@ -41,6 +41,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void ChangeScore(int value)
     {
         score += Mathf.RoundToInt(value * scoreMultiplier);
+        TotalScore += score;
         scoreText.text = score.ToString();
     }
     
