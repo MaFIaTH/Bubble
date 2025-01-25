@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -31,6 +32,7 @@ public abstract class Bubble : MonoBehaviour, IPointerClickHandler
     [SerializeField] protected BubbleType bubbleType;
     [SerializeField] private float dropWeight = 1;
     [SerializeField] private int score;
+    [SerializeField] private MMF_Player feedbacks;
 
     public float DropWeight
     {
@@ -98,6 +100,7 @@ public abstract class Bubble : MonoBehaviour, IPointerClickHandler
             PassiveManager.Instance.ApplyPassives(PassiveType.Score, bombType, ref finalScore);
         }
         GameManager.Instance.ChangeScore(Mathf.RoundToInt(finalScore));
+        if (feedbacks) feedbacks.PlayFeedbacks();
         ActivateAbility();
     }
 
