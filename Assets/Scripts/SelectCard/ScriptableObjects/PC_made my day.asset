@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96be57c5d89b92d41a56b6c7f9045055, type: 3}
-  m_Name: Pc_Test4
+  m_Name: PC_made my day
   m_EditorClassIdentifier: 
-  cardName: test4
-  cardCost: 500
-  cardDescription: test4
+  cardName: made my day
+  cardCost: 700
+  cardDescription: "Points earned from \nheal bubbles\nincreased by 100%."

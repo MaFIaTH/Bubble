@@ -7,9 +7,8 @@ using UnityEngine;
 public class PointManager : MonoBehaviour
 {
    public static PointManager instance;
-   private float point = 0;
    [field: SerializeField]
-   public float Point { get; set ; }
+   public int Point { get; set ; }
    [SerializeField] TextMeshProUGUI pointText;
 
    private void Awake()
