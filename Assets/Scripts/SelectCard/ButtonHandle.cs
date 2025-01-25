@@ -11,8 +11,8 @@ public class ButtonHandle : MonoBehaviour
     private Vector2 OriginalPos;
     private void Start()
     {
-        ChooseCard.instance.OnZoomCard += MoveButton;
-        ChooseCard.instance.OnUnZoomCard += MoveButtonBack;
+        ChooseCard.Instance.OnZoomCard += MoveButton;
+        ChooseCard.Instance.OnUnZoomCard += MoveButtonBack;
         OriginalPos = transform.GetComponent<RectTransform>().anchoredPosition;
     }
     void MoveButton()

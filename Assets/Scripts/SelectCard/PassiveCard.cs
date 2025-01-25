@@ -20,8 +20,8 @@ public class PassiveCard : Card  ,IPointerClickHandler
     
     private void Start()
     {
-        ChooseCard.instance.OnZoomCard+= OnZoomCard;
-        ChooseCard.instance.OnUnZoomCard+= OnUnZoomCard;
+        ChooseCard.Instance.OnZoomCard+= OnZoomCard;
+        ChooseCard.Instance.OnUnZoomCard+= OnUnZoomCard;
         panelRectTransform = GetComponent<RectTransform>();
         OriginalPos = transform.GetComponent<RectTransform>().anchoredPosition;
     }
@@ -67,17 +67,14 @@ public class PassiveCard : Card  ,IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        ChooseCard.instance.cardID = cardID;
+        ChooseCard.Instance.cardID = cardID;
         var passiveCard = this;
-        ChooseCard.instance.GetPassiveCard(passiveCard);
-        ChooseCard.instance.OnSelectedCard?.Invoke();
-        
-        
-        
+        ChooseCard.Instance.GetPassiveCard(passiveCard);
+        ChooseCard.Instance.OnSelectedCard?.Invoke();
     }
     private void OnZoomCard()
     {
-        if (this == ChooseCard.instance.lastCard )
+        if (this == ChooseCard.Instance.lastCard )
         {
             panelRectTransform.SetAsLastSibling();
             sequence = DOTween.Sequence()
@@ -88,14 +85,14 @@ public class PassiveCard : Card  ,IPointerClickHandler
     }
     private void OnUnZoomCard()
     {
-        if (this == ChooseCard.instance.lastCard )
+        if (this == ChooseCard.Instance.lastCard )
         {
             sequence = DOTween.Sequence()
                 .Append(transform.GetComponent<RectTransform>().DOAnchorPos(new Vector2(OriginalPos.x,OriginalPos.y),0.5f))
                 .Join(transform.DOScale(1f, 0.5f));
-            ChooseCard.instance.cardID = CardID.None; 
-            ChooseCard.instance.GetPassiveCard(null);
-            ChooseCard.instance.Tapcount = 0;
+            ChooseCard.Instance.cardID = CardID.None; 
+            ChooseCard.Instance.GetPassiveCard(null);
+            ChooseCard.Instance.Tapcount = 0;
         }
     }
 }

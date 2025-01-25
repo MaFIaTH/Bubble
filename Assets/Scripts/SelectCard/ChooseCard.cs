@@ -1,40 +1,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityCommunity.UnitySingleton;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ChooseCard : Card
+public class ChooseCard : MonoSingleton<ChooseCard>, IPointerClickHandler
 {
-    
-    public static ChooseCard instance;
     [SerializeField] GameObject ComfirmButton;
+    public CardID cardID;
     public Action OnSelectedCard;
     public Action OnZoomCard;
     public Action OnUnZoomCard;
     public int Tapcount = 0;
     private CardID lastCardID;
     public PassiveCard lastCard;
-    private void Awake()
+
+    private Image overlay;
+    protected override void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
+        overlay = GetComponent<Image>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !IsMouseOverUI())
-        {
-            OnUnZoomCard?.Invoke();
-            ComfirmButton.SetActive(false);
-        }
+        // if (Input.GetMouseButtonDown(0) && !IsMouseOverUI())
+        // {
+        //     OnUnZoomCard?.Invoke();
+        //     ComfirmButton.SetActive(false);
+        // }
     }
 
     private void Start()
@@ -44,15 +41,15 @@ public class ChooseCard : Card
     void TapCard()
     {
         ComfirmButton.SetActive(true);
-        Debug.Log(cardID );
-        if ( cardID != lastCardID || cardID == lastCardID && Tapcount == 0 )
+        Debug.Log(cardID);
+        if (cardID != lastCardID || cardID == lastCardID && Tapcount == 0 )
         {
             Debug.Log("Tapped");
             Tapcount = 0;
             Tapcount++;
             lastCardID = cardID;
+            ((RectTransform)overlay.transform).SetAsLastSibling();
             OnZoomCard?.Invoke();
-            
         }
         else if (cardID == lastCardID)
         {
@@ -70,8 +67,17 @@ public class ChooseCard : Card
     {
         lastCard = passiveCard;
     }
-    private bool IsMouseOverUI()
+    // private bool IsMouseOverUI()
+    // {
+    //     return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+    // }
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+        ((RectTransform)overlay.transform).SetAsFirstSibling();
+        OnUnZoomCard?.Invoke();
+        ComfirmButton.SetActive(false);
     }
 }
