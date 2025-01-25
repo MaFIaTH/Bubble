@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PassiveManager : PersistentMonoSingleton<PassiveManager>
 {
-    [SerializeField] private List<Passive> passives;
+    [SerializeField] private List<Passive> passives = new List<Passive>();
     public List<Passive> Passives => passives;
 
     public void ApplyPassives(PassiveType passiveType, BubbleType bubbleType, ref float value)
@@ -17,5 +17,11 @@ public class PassiveManager : PersistentMonoSingleton<PassiveManager>
                 value = passive.ProcessValue(value, bubbleType);
             }
         }
+    }
+
+    public void SetPassive(Passive newPassives)
+    {
+        //test
+        passives.Add(newPassives) ;
     }
 }

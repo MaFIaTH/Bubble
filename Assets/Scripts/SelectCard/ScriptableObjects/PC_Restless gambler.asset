@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be57c5d89b92d41a56b6c7f9045055, type: 3}
   m_Name: PC_Restless gambler
   m_EditorClassIdentifier: 
+  BubbleImage: {fileID: 21300000, guid: 07021fc28f69fba41a8e84841282152b, type: 3}
   cardName: "Restless gambler\n (I am Gyanbura !) "
   cardCost: 500
   cardDescription: "Increase the chance of \nmysterious bubble \nwill appear 50%"
+  passive:
+    passiveType: 0
+    modifierType: 1
+    affectedBubbleType: 4096
+    value: 5

@@ -24,15 +24,7 @@ public class ChooseCard : MonoSingleton<ChooseCard>, IPointerClickHandler
         base.Awake();
         overlay = GetComponent<Image>();
     }
-
-    private void Update()
-    {
-        // if (Input.GetMouseButtonDown(0) && !IsMouseOverUI())
-        // {
-        //     OnUnZoomCard?.Invoke();
-        //     ComfirmButton.SetActive(false);
-        // }
-    }
+    
 
     private void Start()
     {
@@ -41,10 +33,8 @@ public class ChooseCard : MonoSingleton<ChooseCard>, IPointerClickHandler
     void TapCard()
     {
         ComfirmButton.SetActive(true);
-        Debug.Log(cardID);
         if (cardID != lastCardID || cardID == lastCardID && Tapcount == 0 )
         {
-            Debug.Log("Tapped");
             Tapcount = 0;
             Tapcount++;
             lastCardID = cardID;
@@ -59,7 +49,7 @@ public class ChooseCard : MonoSingleton<ChooseCard>, IPointerClickHandler
             }
             Tapcount++;
         }
-        Debug.Log(Tapcount);
+        
         
     }
 

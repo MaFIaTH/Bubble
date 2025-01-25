@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleType: 1024
-  dropWeight: 0
+  dropWeight: 0.05
   score: 100
   feedbacks: {fileID: 0}
   row: 0

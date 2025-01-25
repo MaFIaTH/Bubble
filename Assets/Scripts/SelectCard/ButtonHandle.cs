@@ -19,7 +19,7 @@ public class ButtonHandle : MonoBehaviour
     {
         sequence = DOTween.Sequence()
             .Append(transform.GetComponent<RectTransform>().DOAnchorPos(zoomPos, 0.5f))
-            .Join(transform.DOScale(1.5f, 0.5f));
+            .Join(transform.DOScale(1.3f, 0.5f));
     }
     void MoveButtonBack()
     {
