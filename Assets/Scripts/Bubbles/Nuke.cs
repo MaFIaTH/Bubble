@@ -17,7 +17,7 @@ public class Nuke : Bubble
             {
                 if (bubble != null)
                 {
-                    bubble.Pop();
+                    bubble.Pop(true, BubbleType.Nuke);
                 }
             });
         });

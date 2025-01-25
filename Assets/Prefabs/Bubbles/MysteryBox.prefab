@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51a8994e9d54af49baac7ea893afd6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubbleType: 12
-  dropWeight: 0.1
+  bubbleType: 4096
+  dropWeight: 0
   score: 100
   row: 0
   column: 0

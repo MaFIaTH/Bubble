@@ -11,6 +11,10 @@ public class HyperSpeed : Bubble
     [SerializeField] private float duration = 5f;
     protected override void ActivateAbility()
     {
-        ProceduralManager.Instance.ChangeSpeed(speedMultiplier, duration, speedPriority);
+        float finalSpeedMultiplier = speedMultiplier;
+        PassiveManager.Instance.ApplyPassives(PassiveType.Speed, bubbleType, ref finalSpeedMultiplier);
+        float finalDuration = duration;
+        PassiveManager.Instance.ApplyPassives(PassiveType.Duration, bubbleType, ref finalDuration);
+        ProceduralManager.Instance.ChangeSpeed(finalSpeedMultiplier, finalDuration, speedPriority);
     }
 }

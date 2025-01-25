@@ -20,6 +20,10 @@ public class GoldenHour : Bubble
 
     protected override void ActivateAbility()
     {
-        GameManager.Instance.ChangeScoreMultiplier(scoreMultiplier, duration);
+        float finalScoreMultiplier = scoreMultiplier;
+        PassiveManager.Instance.ApplyPassives(PassiveType.Score, bubbleType, ref finalScoreMultiplier);
+        float finalDuration = duration;
+        PassiveManager.Instance.ApplyPassives(PassiveType.Duration, bubbleType, ref finalDuration);
+        GameManager.Instance.ChangeScoreMultiplier(finalScoreMultiplier, finalDuration);
     }
 }

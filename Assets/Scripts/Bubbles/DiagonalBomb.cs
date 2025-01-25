@@ -66,7 +66,7 @@ public class DiagonalBomb : Bubble
                 if (topPopColumn >= 0 && topPopColumn < nextTop.Bubbles.Count)
                 {
                     var topBubble = nextTop.Bubbles[topPopColumn];
-                    topBubble.Pop();
+                    topBubble.Pop(true, BubbleType.DiagonalBomb);
                 }
             }
 
@@ -76,7 +76,7 @@ public class DiagonalBomb : Bubble
                 if (bottomPopColumn >= 0 && bottomPopColumn < nextBottom.Bubbles.Count)
                 {
                     var bottomBubble = nextBottom.Bubbles[bottomPopColumn];
-                    bottomBubble.Pop();
+                    bottomBubble.Pop(true, BubbleType.DiagonalBomb);
                 }
             }
         }

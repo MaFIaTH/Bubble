@@ -7,29 +7,40 @@ using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
+[Flags]
 public enum BubbleType
 {
-    Normal,
-    HorizontalBomb,
-    DiagonalBomb,
-    AreaBomb,
-    Damage,
-    Heal,
-    HyperSpeed,
-    SuperSlow,
-    GoldenHour,
-    Nuke,
-    TimeStop,
-    BadNormal,
-    MysteryBox
+    None = 0,
+    Normal = 1 << 0,
+    HorizontalBomb = 1 << 1,
+    DiagonalBomb = 1 << 2,
+    AreaBomb = 1 << 3,
+    Damage = 1 << 4,
+    Heal = 1 << 5,
+    HyperSpeed = 1 << 6,
+    SuperSlow = 1 << 7,
+    GoldenHour = 1 << 8,
+    Nuke = 1 << 9,
+    TimeStop = 1 << 10,
+    BadNormal = 1 << 11,
+    MysteryBox = 1 << 12
 }
 [RequireComponent(typeof(Image))]
 public abstract class Bubble : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private BubbleType bubbleType;
+    [SerializeField] protected BubbleType bubbleType;
     [SerializeField] private float dropWeight = 1;
     [SerializeField] private int score;
-    public float DropWeight => dropWeight;
+
+    public float DropWeight
+    {
+        get
+        {
+            float finalDropWeight = dropWeight;
+            PassiveManager.Instance.ApplyPassives(PassiveType.DropWeight, bubbleType, ref finalDropWeight);
+            return finalDropWeight;
+        }
+    }
     
     [Header("Debug")] 
     [SerializeField, ReadOnly] private int row;
@@ -71,13 +82,22 @@ public abstract class Bubble : MonoBehaviour, IPointerClickHandler
         this.rowParent = rowParent;
     }
 
-    public virtual void Pop()
+    public virtual void Pop(bool fromBomb = false, BubbleType bombType = BubbleType.AreaBomb)
     {
         if (popped) return;
         if (!rowParent.OnScreen) return;
         popped = true;
         image.color = Color.clear;
-        GameManager.Instance.ChangeScore(score);
+        var finalScore = (float)score;
+        if (!fromBomb)
+        {
+            PassiveManager.Instance.ApplyPassives(PassiveType.Score, bubbleType, ref finalScore);
+        }
+        else
+        {
+            PassiveManager.Instance.ApplyPassives(PassiveType.Score, bombType, ref finalScore);
+        }
+        GameManager.Instance.ChangeScore(Mathf.RoundToInt(finalScore));
         ActivateAbility();
     }
 

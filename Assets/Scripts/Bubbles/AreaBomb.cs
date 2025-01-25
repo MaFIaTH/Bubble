@@ -40,7 +40,7 @@ public class AreaBomb : Bubble
             var bubble = bubbleRow.Bubbles[column];
             if (bubble != null && !bubble.Popped)
             {
-                bubble.Pop();
+                bubble.Pop(true, BubbleType.AreaBomb);
             }
         }
         
