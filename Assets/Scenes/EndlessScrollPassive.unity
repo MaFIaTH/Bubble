@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1889172069
 Canvas:
   m_ObjectHideFlags: 0
@@ -1786,6 +1786,7 @@ MonoBehaviour:
   timerText: {fileID: 1942481476}
   scoreMultiplier: 1
   gameTimer: 120
+  freezeFrameFeedback: {fileID: 0}
 --- !u!4 &2024653575
 Transform:
   m_ObjectHideFlags: 0

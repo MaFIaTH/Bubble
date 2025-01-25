@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class SelectCardManager : MonoBehaviour
 {
     [SerializeField] private GameObject CardUI ;
-    [SerializeField] private GameObject ButtonUI ;
+    [SerializeField] private GameObject ButtonUI;
+    [SerializeField] private GameObject Background;
     [SerializeField] private PassiveCard[] passiveCards;
     [SerializeField] private PassiveCardScriptableObject[] passiveCardScriptableObjects;
     private List<PassiveCardScriptableObject> SelectedCard = new List<PassiveCardScriptableObject>(){null,null,null};
@@ -43,6 +44,7 @@ public class SelectCardManager : MonoBehaviour
         PassiveManager.Instance.SetPassive(SelectedCard[index].passive);
         CardUI.SetActive(false);
         ButtonUI.SetActive(false);
+        Background.SetActive(false);
     }
     private void RandomCard()
     {
