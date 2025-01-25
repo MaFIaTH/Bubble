@@ -14,7 +14,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private float scoreMultiplier = 1;
     [SerializeField] private float gameTimer = 120;
     [SerializeField] private MMF_Player freezeFrameFeedback;
- 
+
     Moroutine _scoreMultiplierCoroutine;
     // Start is called before the first frame update
     void Start()
