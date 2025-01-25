@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using MoreMountains.Feedbacks;
 using NaughtyAttributes;
 using UnityEngine;
@@ -31,8 +32,11 @@ public abstract class Bubble : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] protected BubbleType bubbleType;
     [SerializeField] private float dropWeight = 1;
-    [SerializeField] private int score;
-    [SerializeField] private MMF_Player feedbacks;
+    [SerializeField] protected int score;
+    [SerializeField] protected MMF_Player feedbacks;
+    [SerializeField] protected Sprite popSprite;
+    [SerializeField] protected float popFadeDuration = 0.5f;
+    protected Sequence _popSequence;
 
     public float DropWeight
     {
@@ -51,7 +55,7 @@ public abstract class Bubble : MonoBehaviour, IPointerClickHandler
     public int Column => column;
     [SerializeField, ReadOnly] protected BubbleRow rowParent;
     public BubbleRow RowParent => rowParent;
-    [SerializeField, ReadOnly] private bool popped;
+    [SerializeField, ReadOnly] protected bool popped;
     
     public bool Popped => popped;
     
@@ -89,7 +93,9 @@ public abstract class Bubble : MonoBehaviour, IPointerClickHandler
         if (popped) return;
         if (!rowParent.OnScreen) return;
         popped = true;
-        image.color = Color.clear;
+        image.sprite = popSprite;
+        _popSequence = DOTween.Sequence();
+        _popSequence.Append(image.DOFade(0, popFadeDuration));
         var finalScore = (float)score;
         if (!fromBomb)
         {
@@ -106,7 +112,6 @@ public abstract class Bubble : MonoBehaviour, IPointerClickHandler
     }
 
     protected abstract void ActivateAbility();
-
     public void OnPointerClick(PointerEventData eventData)
     {
         Pop();

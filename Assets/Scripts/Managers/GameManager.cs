@@ -101,4 +101,9 @@ public class GameManager : MonoSingleton<GameManager>
     {
         SceneManagerPersistent.Instance.LoadNextScene(SceneTypes.MainMenu, LoadSceneMode.Additive, false);
     }
+    
+    public void RestartGame()
+    {
+        SceneManagerPersistent.Instance.LoadNextScene(SceneTypes.Gameplay, LoadSceneMode.Single, false);
+    }
 }

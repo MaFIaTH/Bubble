@@ -1,10 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class AreaBomb : Bubble
 {
+    [SerializeField] private float popSize = 2f;
+    [SerializeField] private float expandDuration = 0.25f;
 
+    public override void Pop(bool fromBomb = false, BubbleType bombType = BubbleType.AreaBomb)
+    {
+        if (popped) return;
+        if (!rowParent.OnScreen) return;
+        popped = true;
+        image.sprite = popSprite;
+        _popSequence = DOTween.Sequence();
+        _popSequence.Append(image.transform.DOScale(popSize, expandDuration));
+        _popSequence.Append(image.DOFade(0, popFadeDuration));
+        var finalScore = (float)score;
+        if (!fromBomb)
+        {
+            PassiveManager.Instance.ApplyPassives(PassiveType.Score, bubbleType, ref finalScore);
+        }
+        else
+        {
+            Debug.Log("This bubbleType is " + bubbleType);
+            PassiveManager.Instance.ApplyPassives(PassiveType.Score, bombType, ref finalScore);
+        }
+        GameManager.Instance.ChangeScore(Mathf.RoundToInt(finalScore));
+        if (feedbacks) feedbacks.PlayFeedbacks();
+        ActivateAbility();
+        
+    }
     protected override void ActivateAbility()
     {
         // Hex grid movement vectors based on even/odd rows

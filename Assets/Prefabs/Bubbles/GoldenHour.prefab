@@ -92,6 +92,7 @@ MonoBehaviour:
   dropWeight: 0.02
   score: 100
   feedbacks: {fileID: 0}
+  popSprite: {fileID: 21300000, guid: eaf9e93d9db59e44c9c66a125987c0ba, type: 3}
   row: 0
   column: 0
   rowParent: {fileID: 0}

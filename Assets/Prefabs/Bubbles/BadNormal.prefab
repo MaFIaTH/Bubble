@@ -89,9 +89,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bubbleType: 2048
-  dropWeight: 0
+  dropWeight: 0.05
   score: -100
   feedbacks: {fileID: 0}
+  popSprite: {fileID: 21300000, guid: e4a99fd06a121dc45a832778a49b6341, type: 3}
+  popFadeDuration: 0.5
   row: 0
   column: 0
   rowParent: {fileID: 0}
