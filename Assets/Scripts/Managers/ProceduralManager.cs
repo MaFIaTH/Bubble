@@ -21,19 +21,21 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     [SerializeField] private int loopAroundThreshold = 5;
     [SerializeField] private Canvas canvas;
     [Header("Debug")]
+    
     [SerializeField, ReadOnly] private int offScreenRows;
     [SerializeField, ReadOnly] private List<BubbleRow> rows = new List<BubbleRow>();
     public List<BubbleRow> Rows => rows;
     [SerializeField, ReadOnly] private List<Image> backgroundImages = new List<Image>();
     public Canvas Canvas => canvas;
     public float RowSpeed => rowSpeed;
-    
+    public bool IsGameStarted = false;
     public static Action onLoopAround;
     
     private KeyValuePair<Moroutine, int> _currentSpeedCoroutine;
 
     private void OnEnable()
     {
+        PassiveManager.Instance.OnGameStart += StartGame;
         BubbleRow.onRowOffScreen += OnRowOffScreen;
     }
 
@@ -52,10 +54,11 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
         }
     }
 
-    void Start()
+    void StartGame()
     {
         SpawnBackground();
         SpawnRows();
+        IsGameStarted = true;
     }
     
     private void SpawnRows()
@@ -126,8 +129,11 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     // Update is called once per frame
     void Update()
     {
+        if (IsGameStarted)
+        {
+            MoveBackground();
+        }
         
-        MoveBackground();
     }
 
     public void ChangeSpeed(float multiplier, float duration, int priority)

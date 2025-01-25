@@ -24,6 +24,7 @@ public class PassiveManager : PersistentMonoSingleton<PassiveManager>
     public void SetPassive(Passive newPassives)
     {
         //test
+        OnGameStart?.Invoke();
         passives.Add(newPassives) ;
     }
 }

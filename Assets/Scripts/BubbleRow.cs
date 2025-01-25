@@ -71,8 +71,12 @@ public class BubbleRow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveRow();
-        CheckOnScreen();
+        if (ProceduralManager.Instance.IsGameStarted)
+        {
+            MoveRow();
+            CheckOnScreen();
+        }
+        
     }
 
     private void MoveRow()

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,12 +14,30 @@ public class HealthPoint : MonoSingleton<HealthPoint>
     public int DefaultMaxHpValue => defaultMaxHp;
     [SerializeField] private int maximumMaxHp = 6;
     [SerializeField] private Image[] nonHp;
+    [SerializeField] private TextMeshProUGUI levelText;
     private int maxHpNow = 3;
+    public int[] levelCost;
+    [SerializeField] private TextMeshProUGUI levelCostText;
+    public Action OnDamaged;
     public int MaxHpNowValue => maxHpNow;
     private int levelHp = 0;
     private int healthPoint = 3;
     public int HealthPointValue => healthPoint;
-    
+
+    private void Start()
+    {
+        OnDamaged += IsDie;
+        levelText.text = levelHp.ToString();
+        levelCostText.text = levelCost[0].ToString();
+    }
+    private void IsDie()
+    {
+        if (healthPoint <= 0)
+        {
+            ProceduralManager.Instance.IsGameStarted = false;
+            Debug.Log("Die");
+        }
+    }
     public void ChangeHealth(int value)
     {
         healthPoint += value;
@@ -40,6 +60,7 @@ public class HealthPoint : MonoSingleton<HealthPoint>
         {
             maxHpNow++;
             healthPoint++;
+            
             HealthUI.Instance.CreateHealthUI();
         }
     }
@@ -50,14 +71,16 @@ public class HealthPoint : MonoSingleton<HealthPoint>
         switch (levelHp)
         {
             case 0:
-                Debug.Log("Upgrade"); 
-                Upgrade(50000,0);
+                Debug.Log("Upgrade1"); 
+                Upgrade(levelCost[0],0);
                 break;
             case 1:
-                Upgrade(100000,1);
+                Debug.Log("Upgrade2");  
+                Upgrade(levelCost[1],1);
                 break;
             case 2:
-                Upgrade(150000,2);
+                Debug.Log("Upgrade3"); 
+                Upgrade(levelCost[2],2);
                 break;
             default:
                 Debug.Log("HasNoEnoghUpgrade");
@@ -69,14 +92,32 @@ public class HealthPoint : MonoSingleton<HealthPoint>
 
     public void Upgrade(int point,int index)
     {
+        
         if (point <= GameManager.TotalScore)
         {
+            if (index > 2)
+            {
+                levelCostText.text = "Max Upgrade";
+                return;
+            }
             IncreaseMaxHp();
             GameManager.TotalScore -= point;
             UpdateHpUI(index);
             if (levelHp < 2){
+                
                  levelHp++;
+                 Debug.Log(levelHp);
+                 levelText.text = (levelHp).ToString();
+                 if (index <= 1)
+                 {
+                     levelCostText.text = levelCost[index+1].ToString();
+                 }
+                
+                 return;
             }
+            
+            levelText.text = (levelHp + 1).ToString();
+            
             
         }
     }
