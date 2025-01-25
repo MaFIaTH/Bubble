@@ -126,6 +126,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     // Update is called once per frame
     void Update()
     {
+        
         MoveBackground();
     }
 

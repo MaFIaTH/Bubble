@@ -254,7 +254,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 1
       id: unity-search-toolbar
       index: 1
@@ -306,7 +306,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Light Settings
       index: 2
@@ -332,7 +332,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Cloth Constraints
       index: 3
@@ -345,7 +345,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Cloth Collisions
       index: 4
@@ -397,7 +397,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Occlusion Culling
       index: 5
@@ -410,7 +410,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Physics Debugger
       index: 6
@@ -423,7 +423,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Scene Visibility
       index: 7
@@ -436,7 +436,7 @@ MonoBehaviour:
       collapsed: 0
       displayed: 0
       snapOffset: {x: 0, y: 0}
-      snapOffsetDelta: {x: 0, y: 25}
+      snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Particles
       index: 8
@@ -602,17 +602,17 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_WindowGUID: c776e2dec51b18a41b747f756b2cc9cc
   m_Gizmos: 1
-  m_OverrideSceneCullingMask: 0
-  m_SceneIsLit: 0
+  m_OverrideSceneCullingMask: 6917529027641081856
+  m_SceneIsLit: 1
   m_SceneLighting: 1
   m_2DMode: 1
   m_isRotationLocked: 0
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: 552.97906, y: 265.59204, z: -25.618801}
     speed: 2
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: 552.97906, y: 265.59204, z: -25.618801}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_SceneViewState:
     m_AlwaysRefresh: 0
     showFog: 1
-    showSkybox: 0
+    showSkybox: 1
     showFlares: 1
     showImageEffects: 1
     showParticleSystems: 1
@@ -662,9 +662,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 91.92388
+    m_Target: 273.83923
     speed: 2
-    m_Value: 91.92388
+    m_Value: 273.83923
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 92729
+  controlID: 174555
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -889,10 +889,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f2490100
-      m_LastClickedID: 0
-      m_ExpandedIDs: ca7dc6ffd67dc6ff2a4a0100
+      scrollPos: {x: 0, y: 20}
+      m_SelectedIDs: 40a101006aa20100
+      m_LastClickedID: 107114
+      m_ExpandedIDs: c06ab7ffd06ab7ffda6ab7ffbeffb8ffbed2b9ffdee2b9ffc03bbaff32bbbaff42bbbaff52bbbaff1215c4ffb660c4ffbc60c4ff1e70c4ff2e06c5ff0449c5ffbc7dc5ff02eec5ff1ceec5ff30eec5ffac20c6ffe224c6ff9225c6ff7226c6ff7ee3c8ff7802c9ff8602c9ff0804c9fff008c9ff1ed0d5ffb474dbffb275dbffa6e9e1ffd6e9e1ff1eeae1ff4eeae1ffc6eae1ff30ebe1ff9aebe1ff12ece1ff68ece1ff98ece1ffd2ece1ff10ede1ff4aede1ff7aede1ffc2ede1fff2ede1ff3aeee1ff80f0e5ff82f0e5ffa6dde6fffce0e7ff1a21ecffd4c5f0ffb40ef1ff3aa3fcff9e81feff2e5cffffc4fafffff4ffffff60840000aa840000bc840000a0b2000096b40000dcb4000052c100009cc1000032330100e634010052a1010082a1010088a10100aea10100f0a1010004a2010020a2010032a2010046a2010074a2010082a20100a4a20100b6a20100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -988,7 +988,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Bubbles
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -996,16 +996,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs/Bubbles
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\thesi\OneDrive\Desktop\Bubble
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 24}
-    m_SelectedIDs: ba870000
-    m_LastClickedID: 34746
-    m_ExpandedIDs: 000000008e87000090870000928700009487000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 94870000
+    m_LastClickedID: 34708
+    m_ExpandedIDs: 000000008e8700009087000092870000aa870000c487000086c9000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1033,7 +1033,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008e87000090870000928700009487000000ca9a3b
+    m_ExpandedIDs: 000000008e8700009087000092870000aa870000c487000086c9000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1058,10 +1058,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f2490100
-    m_LastClickedInstanceID: 84466
+    m_SelectedInstanceIDs: 40a101006aa20100
+    m_LastClickedInstanceID: 107114
     m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: 8ef20100feb10000d6b100009e110100
+    m_ExpandedInstanceIDs: 8ef20100feb10000d6b100009e110100e46e0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityCommunity.UnitySingleton;
@@ -7,6 +8,7 @@ public class PassiveManager : PersistentMonoSingleton<PassiveManager>
 {
     [SerializeField] private List<Passive> passives = new List<Passive>();
     public List<Passive> Passives => passives;
+    public Action OnGameStart;
 
     public void ApplyPassives(PassiveType passiveType, BubbleType bubbleType, ref float value)
     {
