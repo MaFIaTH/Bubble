@@ -68,12 +68,11 @@ public class HealthUI : MonoBehaviour
     // รอแก้ ไม่สามารถลบได้
     public void ResetHealthUI()
     {
-        for (int i = 0; i < HealthPoint.Instance.MaxNowHpValue; i++)
+        for (int i = HealthPoint.Instance.MaxNowHpValue; i > HealthPoint.Instance.MinHpValue; i--)
         {
             if (i > HealthPoint.Instance.MinHpValue)
             {
-                Destroy(heartCreatePrefab[i]);
-                Debug.Log("Reset Health UI " + i);
+                Destroy(heartCreatePrefab[i -1]);
             }
         }
     }
