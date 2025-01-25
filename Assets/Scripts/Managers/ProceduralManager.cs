@@ -20,6 +20,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     [SerializeField] private float rowSpeed;
     [SerializeField] private int loopAroundThreshold = 5;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject OverlayObject;
     [Header("Debug")]
     
     [SerializeField, ReadOnly] private int offScreenRows;
@@ -60,7 +61,16 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
         SpawnRows();
         IsGameStarted = true;
     }
-    
+
+    public void PauseGame()
+    {
+        if (OverlayObject.activeInHierarchy)
+        {
+            OverlayObject.SetActive(false);
+            return;
+        }
+        OverlayObject.SetActive(true);
+    }
     private void SpawnRows()
     {
         for (int i = 0; i < rowsCount; i++)

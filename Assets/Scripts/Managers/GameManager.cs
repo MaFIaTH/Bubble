@@ -38,7 +38,7 @@ public class GameManager : MonoSingleton<GameManager>
             UpdateTimer();
         }
     }
-
+    
     private void UpdateTimer()
     {
         gameTimer -= Time.deltaTime;
@@ -55,7 +55,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void ChangeScore(int value)
     {
         score += Mathf.RoundToInt(value * scoreMultiplier);
-        TotalScore += score;
+        TotalScore = score;
         scoreText.text = score.ToString();
     }
     
