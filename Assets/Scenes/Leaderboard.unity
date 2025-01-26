@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 7248806}
   - component: {fileID: 7248805}
   - component: {fileID: 7248804}
+  - component: {fileID: 7248807}
+  - component: {fileID: 7248808}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -298,6 +300,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7248802}
   m_CullTransparentMesh: 1
+--- !u!114 &7248807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7248802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56393f797a0f7e94e95547f5052052a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7248808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7248802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1 &7284600
 GameObject:
   m_ObjectHideFlags: 0
@@ -3758,7 +3785,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 498019609}
   m_HandleRect: {fileID: 498019608}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 0.008928572
   m_Size: 0.9999958
   m_NumberOfSteps: 0
   m_OnValueChanged:
