@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using NaughtyAttributes;
 using Redcode.Moroutines;
 using TMPro;
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -23,6 +25,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private int testScore;
     [SerializeField] private CanvasGroup gameCanvasGroup;
     [SerializeField] private MMF_Player screenEffectFeedback;
+    [SerializeField] private Slider volumeSlider;
     private bool is15FirstTime = true;
     private Sequence _sequence;
     [SerializeField] public GameObject totalPointObject;
@@ -46,6 +49,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         scoreText.text = score.ToString();
         totalPointObject.SetActive(true);
+        volumeSlider.value = MMSoundManager.Instance.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Master, false);
+        volumeSlider.onValueChanged.AddListener(ChangeVolume);
     }
  
     private void Update()
@@ -55,6 +60,11 @@ public class GameManager : MonoSingleton<GameManager>
         {
             UpdateTimer();
         }
+    }
+    
+    private void ChangeVolume(float value)
+    {
+        MMSoundManager.Instance.SetVolumeMaster(value);
     }
     
     private void UpdateTimer()

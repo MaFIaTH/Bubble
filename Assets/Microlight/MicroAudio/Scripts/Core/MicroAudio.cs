@@ -65,8 +65,8 @@ namespace Microlight.MicroAudio {
         const string MIXER_MASTER = "MasterVolume";
         const string MIXER_MUSIC = "MusicVolume";
         const string MIXER_SOUNDS = "SoundsVolume";
-        const string MIXER_SFX = "SFXVolume";
-        const string MIXER_UI = "UIVolume";
+        const string MIXER_SFX = "SfxVolume";
+        const string MIXER_UI = "UiVolume";
 
         // Keys for PlayerPref for saving and loading of volume
         const string MASTER_KEY = "microAudioMasterVolume";

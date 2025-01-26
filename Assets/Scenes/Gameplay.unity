@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.54509807}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2309,7 +2309,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5025bf2c6fec74049bbe552c2fe26c6c, type: 2}
   - {fileID: 11400000, guid: f206e26300c39ee42b4e158b4787b512, type: 2}
   - {fileID: 11400000, guid: e02ae3ec5f80aa240a1a95fc3c9bf0ac, type: 2}
-  isTest: 0
+  isTest: 1
 --- !u!4 &449568794
 Transform:
   m_ObjectHideFlags: 0
@@ -9478,6 +9478,7 @@ MonoBehaviour:
   testScore: 300000
   gameCanvasGroup: {fileID: 1889172071}
   screenEffectFeedback: {fileID: 1532965580}
+  volumeSlider: {fileID: 484563215}
   totalPointObject: {fileID: 1134166449}
 --- !u!4 &2024653575
 Transform:
