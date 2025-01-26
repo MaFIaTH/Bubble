@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 575442273508186280, guid: d2d4d906339da84449019d36bd0e4ff3, type: 3}
+      propertyPath: _mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
+    - target: {fileID: 575442273508186280, guid: d2d4d906339da84449019d36bd0e4ff3, type: 3}
+      propertyPath: _uiMixerGroup
+      value: 
+      objectReference: {fileID: -3783893103257190392, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
+    - target: {fileID: 575442273508186280, guid: d2d4d906339da84449019d36bd0e4ff3, type: 3}
+      propertyPath: _sfxMixerGroup
+      value: 
+      objectReference: {fileID: -3165942800488051908, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
+    - target: {fileID: 575442273508186280, guid: d2d4d906339da84449019d36bd0e4ff3, type: 3}
+      propertyPath: _musicMixerGroup
+      value: 
+      objectReference: {fileID: -2273146209696275378, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
+    - target: {fileID: 575442273508186280, guid: d2d4d906339da84449019d36bd0e4ff3, type: 3}
+      propertyPath: _masterMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 7e984f512e89b60468e829489e8883e3, type: 2}
     - target: {fileID: 575442273508186281, guid: d2d4d906339da84449019d36bd0e4ff3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

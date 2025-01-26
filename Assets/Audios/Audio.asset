@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Audio
   m_EditorClassIdentifier: 
   audioData:
-    _serializedList: []
+    _serializedList:
+    - Key: MainMenu
+      Value: {fileID: 8300000, guid: fd92dc484217c8546982a7fb8d1ebc1e, type: 3}
+    - Key: Gameplay
+      Value: {fileID: 8300000, guid: 24b76bf07565f6947ab3c1e9e1f82245, type: 3}
