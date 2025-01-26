@@ -89,18 +89,25 @@ public class BubbleRow : MonoBehaviour
     {
         var rectTransform = transform as RectTransform;
         var height = rectTransform.rect.height;
-        if (rectTransform.anchoredPosition.y - (height / 2) <= ProceduralManager.Instance.Canvas.pixelRect.height / 2 && 
-            rectTransform.anchoredPosition.y + (height / 2) >= -ProceduralManager.Instance.Canvas.pixelRect.height / 2)
-        {
-            onScreen = true;
-        }
-        else
+        var middleBox = ProceduralManager.Instance.MiddleBox;
+        var rowTop = rectTransform.anchoredPosition.y + (height / 2);
+        var rowBottom = rectTransform.anchoredPosition.y - (height / 2);
+        var middleTop = middleBox.anchoredPosition.y + middleBox.rect.height / 2;
+        var middleBottom = middleBox.anchoredPosition.y - middleBox.rect.height / 2;
+        if (rowBottom > middleTop ||
+            rowTop < middleBottom)
         {
             if (onScreen)
             {
+                Debug.Log(
+                    $"rowBottom: {rowBottom}, middleTop: {middleTop}, rowTop: {rowTop}, middleBottom: {middleBottom}");
                 onRowOffScreen?.Invoke();
             }
             onScreen = false;
+        }
+        else
+        {
+            onScreen = true;
         }
     }
 }

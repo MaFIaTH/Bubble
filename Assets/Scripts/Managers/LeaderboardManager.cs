@@ -199,6 +199,7 @@ public class LeaderboardManager : MonoBehaviour
         deleteButton.interactable = activate;
         refreshButton.interactable = activate;
         personalButton.interactable = activate;
+        top3Entries.ForEach(a => a.gameObject.SetActive(activate));
     }
     
     private void OnGetEntries(Entry[] entries, bool scrollToSelf = false)

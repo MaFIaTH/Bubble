@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using MoreMountains.Feedbacks;
 using NaughtyAttributes;
 using Redcode.Moroutines;
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ProceduralManager : MonoSingleton<ProceduralManager>
@@ -20,7 +23,9 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     [SerializeField] private float rowSpeed;
     [SerializeField] private int loopAroundThreshold = 5;
     [SerializeField] private Canvas canvas;
-    [SerializeField] private GameObject OverlayObject;
+    [SerializeField] private RectTransform middleBox;
+    [FormerlySerializedAs("OverlayObject")] [SerializeField] private GameObject overlayObject;
+    [SerializeField] private MMF_Player screenEffectFeedback;
     [Header("Debug")]
     
     [SerializeField, ReadOnly] private int offScreenRows;
@@ -28,6 +33,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     public List<BubbleRow> Rows => rows;
     [SerializeField, ReadOnly] private List<Image> backgroundImages = new List<Image>();
     public Canvas Canvas => canvas;
+    public RectTransform MiddleBox => middleBox;
     public float RowSpeed => rowSpeed;
     public bool IsGameStarted = false;
     public static Action onLoopAround;
@@ -65,12 +71,12 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
 
     public void PauseGame()
     {
-        if (OverlayObject.activeInHierarchy)
+        if (overlayObject.activeInHierarchy)
         {
-            OverlayObject.SetActive(false);
+            overlayObject.SetActive(false);
             return;
         }
-        OverlayObject.SetActive(true);
+        overlayObject.SetActive(true);
     }
     private void SpawnRows()
     {
@@ -103,7 +109,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
             var rectTransform = background.transform as RectTransform;
             rectTransform.anchoredPosition += Vector2.up * (rowSpeed * Time.deltaTime);
             var height = rectTransform.rect.height;
-            if (rectTransform.anchoredPosition.y - (height / 2) >= canvas.pixelRect.height / 2)
+            if (rectTransform.anchoredPosition.y - (height / 2) >= middleBox.anchoredPosition.y + middleBox.rect.height / 2)
             {
                 rectTransform.anchoredPosition -= Vector2.up * (rectTransform.rect.height * backgroundImages.Count);
             }
@@ -159,7 +165,13 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
         {
             return;
         }
-
+        var animatorFeedback = screenEffectFeedback.FeedbacksList.First(x => x.Label == "EffectAnimation") as MMF_AnimatorPlayState;
+        var animatorStateName = multiplier > 1 ? "Speed" : multiplier == 0 ? "Freeze" : "Slow";
+        var pauseFeedback = screenEffectFeedback.FeedbacksList.First(x => x.Label == "EffectDuration") as MMF_Pause;
+        if (pauseFeedback != null) pauseFeedback.PauseDuration = duration;
+        if (animatorFeedback != null) animatorFeedback.StateName = animatorStateName;
+        screenEffectFeedback.Initialization();
+        screenEffectFeedback.PlayFeedbacks();
         var originalSpeed = rowSpeed;
         var speedCoroutine = Moroutine.Run(gameObject, ChangeSpeedCo(multiplier, duration));
         speedCoroutine.OnCompleted((x) =>

@@ -15,7 +15,7 @@ public class MysteryBox : Bubble
     {
         var allBubbles = rowParent.BubblePrefabs.Where(x => x.GetType() != typeof(MysteryBox)).ToList();
         var randomBubble = allBubbles.GetRandomElement();
-        var bubble = Instantiate(randomBubble, transform.position, Quaternion.identity);
+        var bubble = Instantiate(randomBubble, transform.position, Quaternion.identity, transform);
         bubble.Initialize(Row, Column, rowParent);
         bubble.Pop();
     }

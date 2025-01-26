@@ -2892,7 +2892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &759169433
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3658,10 +3658,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1788794611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.65997314, y: 42.849976}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &981987324
 GameObject:
@@ -5095,13 +5095,15 @@ MonoBehaviour:
   rowsCount: 21
   bubblePerRow: 5
   rowSpacing: 173
-  firstRowPosition: {x: 0, y: 880, z: 0}
+  firstRowPosition: {x: 0, y: 620, z: 0}
   rowsParent: {fileID: 966596201}
   backgroundParent: {fileID: 2010279289}
   rowSpeed: 100
   loopAroundThreshold: 2
   canvas: {fileID: 1889172069}
-  OverlayObject: {fileID: 1428654410}
+  middleBox: {fileID: 1885172245}
+  overlayObject: {fileID: 1428654410}
+  screenEffectFeedback: {fileID: 1532965580}
   offScreenRows: 0
   rows: []
   backgroundImages: []
@@ -5453,7 +5455,9 @@ MonoBehaviour:
   - rid: 671996792257380361
   - rid: 671996792257380362
   - rid: 671996792257380363
+  - rid: 671996809393209357
   - rid: 671996792257380364
+  - rid: 671996809393209352
   - rid: 671996792257380365
   KeepPlayModeChanges: 0
   PerformanceMode: 0
@@ -5670,7 +5674,7 @@ MonoBehaviour:
       data:
         Active: 1
         UniqueID: -1891153701
-        Label: Animator Play State
+        Label: EffectAnimation
         OriginalLabel: Animator Play State
         ChannelMode: 0
         Channel: 0
@@ -5741,8 +5745,8 @@ MonoBehaviour:
         DebugActive: 0
         BoundAnimator: {fileID: 759169434}
         ExtraBoundAnimators: []
-        DeclaredDuration: 0.5
-        StateName: Nuke
+        DeclaredDuration: 0
+        StateName: sdcasdasd
         Mode: 0
         NormalizedTime: 0
         FixedTime: 0
@@ -5836,31 +5840,454 @@ MonoBehaviour:
             serializedVersion: 2
             m_Curve:
             - serializedVersion: 3
-              time: 0.004322052
-              value: -0.007183075
-              inSlope: 0
-              outSlope: 0
+              time: 0
+              value: 0
+              inSlope: 2.939191
+              outSlope: 2.939191
               tangentMode: 0
               weightedMode: 0
               inWeight: 0
-              outWeight: 0
-            - serializedVersion: 3
-              time: 0.7081164
-              value: 0.005916059
-              inSlope: -0.07038261
-              outSlope: -0.07038261
-              tangentMode: 0
-              weightedMode: 0
-              inWeight: 0.16904989
               outWeight: 0.33333334
             - serializedVersion: 3
-              time: 1.0082859
-              value: 0.99304855
-              inSlope: 0.08138584
-              outSlope: 0.08138584
+              time: 0.020408163
+              value: 0.059983492
+              inSlope: 2.8792162
+              outSlope: 2.8792162
               tangentMode: 0
               weightedMode: 0
-              inWeight: 0.23086801
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.040816326
+              value: 0.11751902
+              inSlope: 2.7605143
+              outSlope: 2.7605143
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.06122449
+              value: 0.17265755
+              inSlope: 2.6443172
+              outSlope: 2.6443172
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.08163265
+              value: 0.22545034
+              inSlope: 2.5306156
+              outSlope: 2.5306156
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.10204082
+              value: 0.275948
+              inSlope: 2.419407
+              outSlope: 2.419407
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.12244898
+              value: 0.32420164
+              inSlope: 2.3107026
+              outSlope: 2.3107026
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.14285715
+              value: 0.37026238
+              inSlope: 2.2044973
+              outSlope: 2.2044973
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.1632653
+              value: 0.4141811
+              inSlope: 2.1007931
+              outSlope: 2.1007931
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.18367347
+              value: 0.45600903
+              inSlope: 1.9995853
+              outSlope: 1.9995853
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.20408164
+              value: 0.49579686
+              inSlope: 1.9008732
+              outSlope: 1.9008732
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.2244898
+              value: 0.5335957
+              inSlope: 1.8046633
+              outSlope: 1.8046633
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.24489796
+              value: 0.5694566
+              inSlope: 1.7109535
+              outSlope: 1.7109535
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.26530612
+              value: 0.6034305
+              inSlope: 1.6197417
+              outSlope: 1.6197417
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.2857143
+              value: 0.6355685
+              inSlope: 1.5310276
+              outSlope: 1.5310276
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.30612245
+              value: 0.66592145
+              inSlope: 1.4448147
+              outSlope: 1.4448147
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.3265306
+              value: 0.6945405
+              inSlope: 1.3611013
+              outSlope: 1.3611013
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.3469388
+              value: 0.7214766
+              inSlope: 1.2798843
+              outSlope: 1.2798843
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.36734694
+              value: 0.7467807
+              inSlope: 1.2011657
+              outSlope: 1.2011657
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.3877551
+              value: 0.77050376
+              inSlope: 1.124948
+              outSlope: 1.124948
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.40816328
+              value: 0.79269695
+              inSlope: 1.05123
+              outSlope: 1.05123
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.42857143
+              value: 0.8134111
+              inSlope: 0.9800083
+              outSlope: 0.9800083
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.4489796
+              value: 0.8326973
+              inSlope: 0.9112853
+              outSlope: 0.9112853
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.46938777
+              value: 0.85060644
+              inSlope: 0.8450644
+              outSlope: 0.8450644
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.48979592
+              value: 0.8671897
+              inSlope: 0.7813413
+              outSlope: 0.7813413
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.5102041
+              value: 0.8824979
+              inSlope: 0.72011614
+              outSlope: 0.72011614
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.53061223
+              value: 0.8965822
+              inSlope: 0.661391
+              outSlope: 0.661391
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.5510204
+              value: 0.90949345
+              inSlope: 0.6051651
+              outSlope: 0.6051651
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.5714286
+              value: 0.9212828
+              inSlope: 0.55143726
+              outSlope: 0.55143726
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.59183675
+              value: 0.9320011
+              inSlope: 0.50020736
+              outSlope: 0.50020736
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.6122449
+              value: 0.94169945
+              inSlope: 0.4514796
+              outSlope: 0.4514796
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.63265306
+              value: 0.95042884
+              inSlope: 0.40524894
+              outSlope: 0.40524894
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.6530612
+              value: 0.9582402
+              inSlope: 0.36151546
+              outSlope: 0.36151546
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.67346936
+              value: 0.96518457
+              inSlope: 0.32028303
+              outSlope: 0.32028303
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.6938776
+              value: 0.971313
+              inSlope: 0.28154963
+              outSlope: 0.28154963
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.71428573
+              value: 0.9766764
+              inSlope: 0.24531385
+              outSlope: 0.24531385
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.7346939
+              value: 0.9813258
+              inSlope: 0.21157765
+              outSlope: 0.21157765
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.75510204
+              value: 0.9853122
+              inSlope: 0.18034154
+              outSlope: 0.18034154
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.7755102
+              value: 0.9886867
+              inSlope: 0.151604
+              outSlope: 0.151604
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.79591835
+              value: 0.99150014
+              inSlope: 0.12536491
+              outSlope: 0.12536491
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.81632656
+              value: 0.9938036
+              inSlope: 0.10162458
+              outSlope: 0.10162458
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.8367347
+              value: 0.9956481
+              inSlope: 0.08038302
+              outSlope: 0.08038302
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.85714287
+              value: 0.99708456
+              inSlope: 0.061641335
+              outSlope: 0.061641335
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.877551
+              value: 0.99816406
+              inSlope: 0.045396797
+              outSlope: 0.045396797
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.8979592
+              value: 0.9989375
+              inSlope: 0.031652316
+              outSlope: 0.031652316
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.9183673
+              value: 0.999456
+              inSlope: 0.020409334
+              outSlope: 0.020409334
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.93877554
+              value: 0.9997705
+              inSlope: 0.011662049
+              outSlope: 0.011662049
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.9591837
+              value: 0.999932
+              inSlope: 0.005413386
+              outSlope: 0.005413386
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 0.97959185
+              value: 0.9999915
+              inSlope: 0.0016662189
+              outSlope: 0.0016662189
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
+              outWeight: 0.33333334
+            - serializedVersion: 3
+              time: 1
+              value: 1
+              inSlope: 0.00041764995
+              outSlope: 0.00041764995
+              tangentMode: 0
+              weightedMode: 0
+              inWeight: 0.33333334
               outWeight: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
@@ -5888,7 +6315,7 @@ MonoBehaviour:
           TimescaleMode: 0
           ExcludeFromHoldingPauses: 0
           ContributeToTotalDuration: 1
-          InitialDelay: 2.5
+          InitialDelay: 0
           CooldownDuration: 0
           InterruptsOnStop: 1
           NumberOfRepeats: 0
@@ -5961,6 +6388,170 @@ MonoBehaviour:
         StateOnSkip: 1
         SetStateOnPlayerComplete: 0
         StateOnPlayerComplete: 1
+    - rid: 671996809393209352
+      type: {class: MMF_HoldingPause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
+      data:
+        Active: 1
+        UniqueID: 2107902362
+        Label: Holding Pause
+        OriginalLabel: Holding Pause
+        ChannelMode: 0
+        Channel: 0
+        MMChannelDefinition: {fileID: 0}
+        Chance: 100
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          PlayCount: 0
+          LimitPlayCount: 0
+          MaxPlayCount: 3
+          SetPlayCountToZeroOnReset: 0
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        AutomatedTargetAcquisition:
+          Mode: 0
+          ChildIndex: 0
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        UseRange: 0
+        RangeDistance: 5
+        UseRangeFalloff: 0
+        RangeFalloff:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapRangeFalloff: {x: 0, y: 1}
+        AutomaticShakerSetupButton:
+          ButtonText: 
+        Owner: {fileID: 1532965580}
+        DebugActive: 0
+        PauseDuration: 0
+        RandomizePauseDuration: 0
+        MinPauseDuration: 1
+        MaxPauseDuration: 3
+        RandomizeOnEachPlay: 1
+        ScriptDriven: 0
+        AutoResume: 0
+        AutoResumeAfter: 0.25
+    - rid: 671996809393209357
+      type: {class: MMF_Pause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
+      data:
+        Active: 1
+        UniqueID: -902449016
+        Label: EffectDuration
+        OriginalLabel: Pause
+        ChannelMode: 0
+        Channel: 0
+        MMChannelDefinition: {fileID: 0}
+        Chance: 100
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          PlayCount: 0
+          LimitPlayCount: 0
+          MaxPlayCount: 3
+          SetPlayCountToZeroOnReset: 0
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        AutomatedTargetAcquisition:
+          Mode: 0
+          ChildIndex: 0
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        UseRange: 0
+        RangeDistance: 5
+        UseRangeFalloff: 0
+        RangeFalloff:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapRangeFalloff: {x: 0, y: 1}
+        AutomaticShakerSetupButton:
+          ButtonText: 
+        Owner: {fileID: 1532965580}
+        DebugActive: 0
+        PauseDuration: 0
+        RandomizePauseDuration: 0
+        MinPauseDuration: 1
+        MaxPauseDuration: 3
+        RandomizeOnEachPlay: 1
+        ScriptDriven: 0
+        AutoResume: 0
+        AutoResumeAfter: 0.25
 --- !u!4 &1532965581
 Transform:
   m_ObjectHideFlags: 0
@@ -6186,7 +6777,9 @@ MonoBehaviour:
   - rid: 671996792257380361
   - rid: 671996792257380362
   - rid: 671996792257380363
+  - rid: 671996809393209354
   - rid: 671996792257380364
+  - rid: 671996809393209355
   - rid: 671996792257380365
   KeepPlayModeChanges: 0
   PerformanceMode: 0
@@ -6621,7 +7214,7 @@ MonoBehaviour:
           TimescaleMode: 0
           ExcludeFromHoldingPauses: 0
           ContributeToTotalDuration: 1
-          InitialDelay: 2.5
+          InitialDelay: 0
           CooldownDuration: 0
           InterruptsOnStop: 1
           NumberOfRepeats: 0
@@ -6694,6 +7287,170 @@ MonoBehaviour:
         StateOnSkip: 1
         SetStateOnPlayerComplete: 0
         StateOnPlayerComplete: 1
+    - rid: 671996809393209354
+      type: {class: MMF_HoldingPause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
+      data:
+        Active: 1
+        UniqueID: 1270132011
+        Label: Holding Pause
+        OriginalLabel: Holding Pause
+        ChannelMode: 0
+        Channel: 0
+        MMChannelDefinition: {fileID: 0}
+        Chance: 100
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          PlayCount: 0
+          LimitPlayCount: 0
+          MaxPlayCount: 3
+          SetPlayCountToZeroOnReset: 0
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        AutomatedTargetAcquisition:
+          Mode: 0
+          ChildIndex: 0
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        UseRange: 0
+        RangeDistance: 5
+        UseRangeFalloff: 0
+        RangeFalloff:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapRangeFalloff: {x: 0, y: 1}
+        AutomaticShakerSetupButton:
+          ButtonText: 
+        Owner: {fileID: 1667642637}
+        DebugActive: 0
+        PauseDuration: 0
+        RandomizePauseDuration: 0
+        MinPauseDuration: 1
+        MaxPauseDuration: 3
+        RandomizeOnEachPlay: 1
+        ScriptDriven: 0
+        AutoResume: 0
+        AutoResumeAfter: 0.25
+    - rid: 671996809393209355
+      type: {class: MMF_HoldingPause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Tools}
+      data:
+        Active: 1
+        UniqueID: 387357622
+        Label: Holding Pause
+        OriginalLabel: Holding Pause
+        ChannelMode: 0
+        Channel: 0
+        MMChannelDefinition: {fileID: 0}
+        Chance: 100
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          PlayCount: 0
+          LimitPlayCount: 0
+          MaxPlayCount: 3
+          SetPlayCountToZeroOnReset: 0
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        AutomatedTargetAcquisition:
+          Mode: 0
+          ChildIndex: 0
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        UseRange: 0
+        RangeDistance: 5
+        UseRangeFalloff: 0
+        RangeFalloff:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapRangeFalloff: {x: 0, y: 1}
+        AutomaticShakerSetupButton:
+          ButtonText: 
+        Owner: {fileID: 1667642637}
+        DebugActive: 0
+        PauseDuration: 0
+        RandomizePauseDuration: 0
+        MinPauseDuration: 1
+        MaxPauseDuration: 3
+        RandomizeOnEachPlay: 1
+        ScriptDriven: 0
+        AutoResume: 0
+        AutoResumeAfter: 0.25
 --- !u!1 &1677689299
 GameObject:
   m_ObjectHideFlags: 0
@@ -7485,8 +8242,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.17, y: -4.66}
-  m_SizeDelta: {x: 927.41, y: 1403.1}
+  m_AnchoredPosition: {x: 0, y: -2.58}
+  m_SizeDelta: {x: 927.41, y: 1408.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1885172246
 MonoBehaviour:
@@ -8167,8 +8924,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.6600342, y: 42.849976}
-  m_SizeDelta: {x: 503.00992, y: 1146.19}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2011552867
 GameObject:
@@ -8282,6 +9039,7 @@ MonoBehaviour:
   freezeFrameFeedback: {fileID: 1667642637}
   testScore: 300000
   gameCanvasGroup: {fileID: 1889172071}
+  screenEffectFeedback: {fileID: 1532965580}
 --- !u!4 &2024653575
 Transform:
   m_ObjectHideFlags: 0
@@ -8761,14 +9519,14 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2024653575}
+  - {fileID: 1148401281}
   - {fileID: 1365270990}
   - {fileID: 449568794}
   - {fileID: 1361799740}
+  - {fileID: 956085491}
   - {fileID: 1889172070}
   - {fileID: 1129383949}
-  - {fileID: 2024653575}
-  - {fileID: 1148401281}
-  - {fileID: 956085491}
   - {fileID: 13739537}
   - {fileID: 1667642636}
   - {fileID: 1532965581}

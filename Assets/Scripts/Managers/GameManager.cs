@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using MoreMountains.Feedbacks;
 using NaughtyAttributes;
 using Redcode.Moroutines;
@@ -18,6 +19,7 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private MMF_Player freezeFrameFeedback;
     [SerializeField] private int testScore;
     [SerializeField] private CanvasGroup gameCanvasGroup;
+    [SerializeField] private MMF_Player screenEffectFeedback;
     public static int TotalScore;
     public static int TotalScoreValue
     {
@@ -79,6 +81,15 @@ public class GameManager : MonoSingleton<GameManager>
     {
         _scoreMultiplierCoroutine?.Stop();
         var toDestroy = _scoreMultiplierCoroutine;
+        if (value > 1)
+        {
+            var animatorFeedback = screenEffectFeedback.FeedbacksList.First(x => x.Label == "EffectAnimation") as MMF_AnimatorPlayState;
+            var pauseFeedback = screenEffectFeedback.FeedbacksList.First(x => x.Label == "EffectDuration") as MMF_Pause;
+            if (pauseFeedback != null) pauseFeedback.PauseDuration = duration;
+            if (animatorFeedback != null) animatorFeedback.StateName = "Golden Hour";
+            screenEffectFeedback.Initialization();
+            screenEffectFeedback.PlayFeedbacks();
+        }
         _scoreMultiplierCoroutine = Moroutine.Run(gameObject, ChangeScoreMultiplierCoroutine(value, duration));
         _scoreMultiplierCoroutine.OnCompleted(x => x?.Destroy());
         toDestroy?.Destroy();
