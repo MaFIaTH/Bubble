@@ -133,6 +133,7 @@ public class GameManager : MonoSingleton<GameManager>
     
     public void RestartGame()
     {
+        TotalScore = 0;
         SceneManagerPersistent.Instance.LoadNextScene(SceneTypes.Gameplay, LoadSceneMode.Single, false);
     }
 }
