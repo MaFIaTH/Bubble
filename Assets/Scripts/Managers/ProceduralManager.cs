@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 using NaughtyAttributes;
 using Redcode.Moroutines;
 using UnityCommunity.UnitySingleton;
@@ -26,6 +27,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
     [SerializeField] private RectTransform middleBox;
     [FormerlySerializedAs("OverlayObject")] [SerializeField] private GameObject overlayObject;
     [SerializeField] private MMF_Player screenEffectFeedback;
+    [SerializeField] private AudioClip bgm;
     [Header("Debug")]
     
     [SerializeField, ReadOnly] private int offScreenRows;
@@ -66,6 +68,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
         SpawnBackground();
         SpawnRows();
         GameManager.TotalScore = 0;
+        GlobalSoundManager.Instance.PlayBGM("Gameplay", duration: 0.5f);
         IsGameStarted = true;
     }
 

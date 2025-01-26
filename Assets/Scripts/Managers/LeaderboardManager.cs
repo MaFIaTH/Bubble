@@ -4,6 +4,7 @@ using System.Linq;
 using Dan.Main;
 using Dan.Models;
 using DG.Tweening;
+using MoreMountains.Tools;
 using NaughtyAttributes;
 using Redcode.Extensions;
 using TMPro;
@@ -40,6 +41,7 @@ public class LeaderboardManager : MonoBehaviour
     [SerializeField] private Button deleteButton;
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button retryButton;
+    [SerializeField] private AudioClip bgm;
     //[SerializeField] private Button retryButton;
     
     // [Header("Scene Transition")]
@@ -73,6 +75,7 @@ public class LeaderboardManager : MonoBehaviour
         //     
         // });
         ShowScore();
+        PlayBGM();
         Debug.Log($"TSV: {GameManager.TotalScoreValue}");
         //SoundManager.Instance.PlayBGM(BGMTypes.Leaderboard, out _bgmAudioSource);
         //SoundManager.Instance.PlaySoundFX(SoundFXTypes.Celebrate, out _);
@@ -100,6 +103,11 @@ public class LeaderboardManager : MonoBehaviour
         submitButton.gameObject.SetActive(false);
         deleteButton.gameObject.SetActive(false);
         retryButton.gameObject.SetActive(false);
+    }
+
+    private void PlayBGM()
+    { 
+        GlobalSoundManager.Instance.PlayBGM("MainMenu", duration: 0.5f);
     }
 
     private void ShowScore()
