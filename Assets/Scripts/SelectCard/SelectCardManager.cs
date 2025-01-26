@@ -11,8 +11,10 @@ public class SelectCardManager : MonoBehaviour
     [SerializeField] private GameObject background;
     [SerializeField] private PassiveCard[] passiveCards;
     [SerializeField] private PassiveCardScriptableObject[] passiveCardScriptableObjects;
+    [SerializeField]private bool isTest = false;
     private List<PassiveCardScriptableObject> selectedCard = new List<PassiveCardScriptableObject>(){null,null,null};
     private List<PassiveCardScriptableObject> previousSelectedCard = new List<PassiveCardScriptableObject>(){null,null,null};
+    
     
     
     private void Start()
@@ -24,7 +26,18 @@ public class SelectCardManager : MonoBehaviour
     {
         RandomCard();
     }
+    public bool IsCanBuyCard(int index)
+    {
+        if (GameManager.TotalScore >= selectedCard[index].cardCost)
+        {
+            GameManager.TotalScore -= selectedCard[index].cardCost;
+            Debug.Log(GameManager.TotalScore);
+            return true;
+        }
+        Debug.LogWarning("you're cost is not enoght");
+        return false;
 
+    }
     public void ConfirmPassive()
     {
         int index = 0;
@@ -39,6 +52,11 @@ public class SelectCardManager : MonoBehaviour
             case CardID.Card3:
                 index = 2;
                 break;
+        }
+
+        if (!isTest)
+        {
+            if (!IsCanBuyCard(index)){ return;}
         }
         PassiveManager.Instance.SetPassive(selectedCard[index].passive);
         cardUI.SetActive(false);

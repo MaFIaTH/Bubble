@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using MoreMountains.Feedbacks;
 using NaughtyAttributes;
 using Redcode.Moroutines;
@@ -14,12 +15,17 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private int score;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private TMP_Text totalPointText;
+    
     [SerializeField] private float scoreMultiplier = 1;
     [SerializeField] private float gameTimer = 120;
     [SerializeField] private MMF_Player freezeFrameFeedback;
     [SerializeField] private int testScore;
     [SerializeField] private CanvasGroup gameCanvasGroup;
     [SerializeField] private MMF_Player screenEffectFeedback;
+    private bool is15FirstTime = true;
+    private Sequence _sequence;
+    [SerializeField] public GameObject totalPointObject;
     public static int TotalScore;
     public static int TotalScoreValue
     {
@@ -39,10 +45,12 @@ public class GameManager : MonoSingleton<GameManager>
     void Start()
     {
         scoreText.text = score.ToString();
+        totalPointObject.SetActive(true);
     }
  
     private void Update()
     {
+        totalPointText.text = TotalScoreValue.ToString();
         if (ProceduralManager.Instance.IsGameStarted)
         {
             UpdateTimer();
@@ -52,9 +60,18 @@ public class GameManager : MonoSingleton<GameManager>
     private void UpdateTimer()
     {
         gameTimer -= Time.deltaTime;
+        if (gameTimer <= 15 && is15FirstTime )
+        {
+            _sequence = DOTween.Sequence()
+                .Append(timerText.GetComponent<RectTransform>().DOScale(1.4f, 0.1f)).OnComplete(() =>
+                timerText.GetComponent<RectTransform>().DOScale(1, 0.1f).SetLoops(-1, LoopType.Yoyo))
+                .Join(timerText.DOColor(Color.red, 0.2f));
+            is15FirstTime = false;
+        }
         // float to MM:SS format
         if (gameTimer <= 0)
         {
+            _sequence.Kill(); // WTF? Why it's not working
             gameTimer = 0;
             //Go to game ledderboard
             GameOver();
@@ -72,6 +89,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void ChangeScore(int value)
     {
+        scoreText.GetComponent<RectTransform>().DOScale(1.3f, 0.2f).OnComplete(() => scoreText.GetComponent<RectTransform>().DOScale(1, 0.2f));
         score += Mathf.RoundToInt(value * scoreMultiplier);
         TotalScore = score;
         scoreText.text = score.ToString();
