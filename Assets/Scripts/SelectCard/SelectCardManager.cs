@@ -24,7 +24,12 @@ public class SelectCardManager : MonoBehaviour
 
     public void RerollCards()
     {
-        RandomCard();
+        if (GameManager.TotalScore >= 3000) 
+        {
+            GameManager.TotalScore -= 3000;
+            RandomCard();
+        }
+        return;
     }
     public bool IsCanBuyCard(int index)
     {
@@ -62,6 +67,14 @@ public class SelectCardManager : MonoBehaviour
         cardUI.SetActive(false);
         buttonUI.SetActive(false);
         background.SetActive(false);
+    }
+    public void SkipPassive()
+    {
+        cardUI.SetActive(false);
+        buttonUI.SetActive(false);
+        background.SetActive(false);
+        PassiveManager.Instance.OnGameStart?.Invoke();
+        
     }
     private void RandomCard()
     {
