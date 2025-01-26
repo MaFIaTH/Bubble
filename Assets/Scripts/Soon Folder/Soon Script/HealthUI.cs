@@ -77,16 +77,22 @@ public class HealthUI : MonoSingleton<HealthUI>
     //Normal Heart Change
     public void TakeHealUI()
     {
-        Debug.Log(PassiveManager.Instance.Passives[0].PassiveType );
+        
+        
+        
+        
         if (HealthPoint.Instance.HealthPointValue > HealthPoint.Instance.MaxHpNowValue)
             return;
-        
+        if (PassiveManager.Instance.Passives.Count == 0)
+        {
+            heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].sprite = heartNormalSprite;
+            heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].transform.DOScale(1.3f, 0.2f).OnComplete(() => heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].GetComponent<RectTransform>().DOScale(1, 0.2f));
+            return;
+        }
         if (PassiveManager.Instance.Passives[0].PassiveType == PassiveType.Heal)
         {
-            
             for (int i = 1; i < HealthPoint.Instance.HealthPointValue; i++)
             {
-                Debug.Log(i);
                 var heartPrefab = heartCreatePrefab[HealthPoint.Instance.HealthPointValue - i];
                 if (heartPrefab.sprite == heartDamageSprite)
                 {
@@ -96,10 +102,12 @@ public class HealthUI : MonoSingleton<HealthUI>
             }
             return;
         }
-        heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].sprite = heartNormalSprite;
-        heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].transform.DOScale(1.3f, 0.2f).OnComplete(() => heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].GetComponent<RectTransform>().DOScale(1, 0.2f));
         
     }
+        
+        
+        
+    
 
     public void nextUpgradePassive()
     {
