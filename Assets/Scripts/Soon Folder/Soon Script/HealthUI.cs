@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using DG.Tweening;
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,12 +28,18 @@ public class HealthUI : MonoSingleton<HealthUI>
         {
             for (int i = 0; i < HealthPoint.Instance.MaxHpNowValue; i++)
             {
-                heartCreatePrefab.Add(Instantiate(heartNormalPrefab, transform).GetComponent<Image>());
+                var heartPrefab = Instantiate(heartNormalPrefab, transform).GetComponent<Image>();
+                heartPrefab.GetComponent<RectTransform>().DOScale(1.3f, 0.2f).OnComplete(() => heartPrefab.GetComponent<RectTransform>().DOScale(1, 0.2f));
+                heartCreatePrefab.Add(heartPrefab);
+                
             }
         }
         else if (HealthPoint.Instance.MaxHpNowValue > HealthPoint.Instance.DefaultMaxHpValue)
         {
-            heartCreatePrefab.Add(Instantiate(heartNormalPrefab, transform).GetComponent<Image>());
+            var heartPrefab = Instantiate(heartNormalPrefab, transform).GetComponent<Image>();
+            heartPrefab.GetComponent<RectTransform>().DOScale(1.3f, 0.2f).OnComplete(() => heartPrefab.GetComponent<RectTransform>().DOScale(1, 0.2f));
+            heartCreatePrefab.Add(heartPrefab);
+            
         }
     }
     
@@ -62,7 +69,9 @@ public class HealthUI : MonoSingleton<HealthUI>
         if (HealthPoint.Instance.HealthPointValue < 0)
             return;
         HealthPoint.Instance.OnDamaged?.Invoke();
+        heartCreatePrefab[HealthPoint.Instance.HealthPointValue].transform.DOScale(1.3f, 0.2f).OnComplete(() => heartCreatePrefab[HealthPoint.Instance.HealthPointValue].GetComponent<RectTransform>().DOScale(1, 0.2f));
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue].sprite = heartDamageSprite;
+        
     }
     
     //Normal Heart Change
@@ -74,14 +83,22 @@ public class HealthUI : MonoSingleton<HealthUI>
         
         if (PassiveManager.Instance.Passives[0].PassiveType == PassiveType.Heal)
         {
+            
             for (int i = 1; i < HealthPoint.Instance.HealthPointValue; i++)
             {
                 Debug.Log(i);
-                heartCreatePrefab[HealthPoint.Instance.HealthPointValue - i].sprite = heartNormalSprite;
+                var heartPrefab = heartCreatePrefab[HealthPoint.Instance.HealthPointValue - i];
+                if (heartPrefab.sprite == heartDamageSprite)
+                {
+                    heartPrefab.sprite = heartNormalSprite;
+                    heartPrefab.transform.DOScale(1.3f, 0.2f).OnComplete(() => heartPrefab.GetComponent<RectTransform>().DOScale(1, 0.2f));
+                }
             }
             return;
         }
         heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].sprite = heartNormalSprite;
+        heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].transform.DOScale(1.3f, 0.2f).OnComplete(() => heartCreatePrefab[HealthPoint.Instance.HealthPointValue - 1].GetComponent<RectTransform>().DOScale(1, 0.2f));
+        
     }
 
     public void nextUpgradePassive()

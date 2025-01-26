@@ -34,14 +34,7 @@ public class PassiveCard : Card  ,IPointerClickHandler
         costValue.text = cardData.cardCost.ToString();
     }
     
-    public void Selected()
-    {
-        if (PointManager.instance.Point >= passiveCardData.cardCost )
-        {
-            PointManager.instance.Point -= passiveCardData.cardCost;
-        }
-        
-    }
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         ChooseCard.Instance.cardID = cardID;

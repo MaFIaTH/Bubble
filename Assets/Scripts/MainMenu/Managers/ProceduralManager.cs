@@ -63,6 +63,7 @@ public class ProceduralManager : MonoSingleton<ProceduralManager>
 
     void StartGame()
     {
+        GameManager.Instance.totalPointObject.SetActive(false);
         SpawnBackground();
         SpawnRows();
         GameManager.TotalScore = 0;
