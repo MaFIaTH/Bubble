@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PC_The healer
   m_EditorClassIdentifier: 
   BubbleImage: {fileID: 21300000, guid: b49587ac12a39fe459d38cb44266fdfc, type: 3}
-  cardName: the healer
-  cardCost: 600
-  cardDescription: "The effect of heal bubble \nis increased double"
+  cardName: The Healer
+  cardCost: 7000
+  cardDescription: Healing bubble heals you 2 points.
   passive:
     passiveType: 4
     modifierType: 1

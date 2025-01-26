@@ -14,12 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BubbleImage: {fileID: 21300000, guid: cb95cde2aba06144fa6bda01f1638852, type: 3}
   cardName: The Bomber III
-  cardCost: 10000
-  cardDescription: 'Points earned from
-
-    DiagonalBomb
-
-    increased by 30%'
+  cardCost: 3000
+  cardDescription: Points earned from Diagonal Bomb increase by 30%.
   passive:
     passiveType: 2
     modifierType: 1

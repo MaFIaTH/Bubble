@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BubbleImage: {fileID: 21300000, guid: b6406cfe945591a4d9b212edf7d849e3, type: 3}
   cardName: Come on! Tap faster!
-  cardCost: 200
-  cardDescription: "increase \nHyper speed bubble \nspeed 15%."
+  cardCost: 2500
+  cardDescription: Increase Hyper Speed bubble's speed by 15%.
   passive:
     passiveType: 3
     modifierType: 1

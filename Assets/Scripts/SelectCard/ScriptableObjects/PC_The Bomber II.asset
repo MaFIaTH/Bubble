@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BubbleImage: {fileID: 21300000, guid: bb88f6b6bfa00814898d60c2dab3b479, type: 3}
   cardName: The Bomber II
-  cardCost: 1200
-  cardDescription: "Points earned from \nHorizontalBomb\nincreased by 30%\n"
+  cardCost: 3000
+  cardDescription: 'Points earned from Horizontal Bomb increase by 30%.
+
+'
   passive:
     passiveType: 2
     modifierType: 1

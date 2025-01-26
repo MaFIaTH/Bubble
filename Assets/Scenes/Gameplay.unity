@@ -1664,6 +1664,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5505773227298450767, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4143111057701614469, guid: d00913c784f662447a6c921e22c5f5a6, type: 2}
+    - target: {fileID: 5505773227298450767, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2442,7 +2450,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5025bf2c6fec74049bbe552c2fe26c6c, type: 2}
   - {fileID: 11400000, guid: f206e26300c39ee42b4e158b4787b512, type: 2}
   - {fileID: 11400000, guid: e02ae3ec5f80aa240a1a95fc3c9bf0ac, type: 2}
-  isTest: 1
+  isTest: 0
 --- !u!4 &449568794
 Transform:
   m_ObjectHideFlags: 0
@@ -2638,6 +2646,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5065967136472793542, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505773227298450767, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4143111057701614469, guid: d00913c784f662447a6c921e22c5f5a6, type: 2}
+    - target: {fileID: 5505773227298450767, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8369425235110168395, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
@@ -9326,6 +9342,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5505773227298450767, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4143111057701614469, guid: d00913c784f662447a6c921e22c5f5a6, type: 2}
+    - target: {fileID: 5505773227298450767, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7892699119245366829, guid: 6fb4f6379df1de44fbc726f408e7d586, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.5
@@ -10245,7 +10269,7 @@ MonoBehaviour:
   - {fileID: 74315749}
   - {fileID: 750928657}
   levelText: {fileID: 1757175700}
-  levelCost: 50c30000a0860100f0490200
+  levelCost: 8813000010270000983a0000
   levelCostText: {fileID: 331137718}
 --- !u!1 &2117590765
 GameObject:

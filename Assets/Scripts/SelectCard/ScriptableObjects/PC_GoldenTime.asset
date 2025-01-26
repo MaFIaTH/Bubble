@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PC_GoldenTime
   m_EditorClassIdentifier: 
   BubbleImage: {fileID: 21300000, guid: 149a8c49b0dde264996b4543062f1b87, type: 3}
-  cardName: GoldenTimeUp
-  cardCost: 500
-  cardDescription: "Increase GoldenTime \nduration + 2.5 second"
+  cardName: Golden Hour
+  cardCost: 2500
+  cardDescription: Increase Golden Hour's score bonus duration + 2.5 seconds.
   passive:
     passiveType: 1
     modifierType: 0
